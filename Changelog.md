@@ -43,19 +43,28 @@ The current tag uses the following library versions:
 
  - Revert "Quieted a warning on fallthrough, as this is intended behaviour" (by Dr John Vidler)
 
-## [v0.2.63](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.62...v0.2.63)
+v0.2.63
+
+## [v0.2.63](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.62...v0.2.63)
 
 Dr John Vidler (9):
  - Removed deactivateLevelSPL entirely as per codal-microbit-v2 issue #222
  - Fix for the microphone failing to wake after a sleep event
+ - Commented out a temporary alias for the face/logo touch button, staged for removal
  - Revert for the face alias removal, for v0.2.63 release
- - Reverted the power saving for the LED Matrix to avoid strange issues with Pins.
  - Snapshot v0.2.63
+ - Reverted the power saving for the LED Matrix to avoid strange issues with Pins.
+ - Merge branch 'master' of ssh://github.com/lancaster-university/codal-microbit-v2
+ - Snapshot v0.2.64
+ - Updated target-locked with the corrected tag version
 
 Github Actions (3):
  - Updated the Changelog
+ - Updated the Changelog
+ - Updated the Changelog
+v0.2.62
 
-## [v0.2.62](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.61...v0.2.62)
+## [v0.2.62](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.61...v0.2.62)
 
 Carlos Pereira Atencio (1):
  - Update target-locked.json codal-core commit to fix builds.
@@ -71,8 +80,9 @@ Github Actions (3):
  - Updated the Changelog
  - Updated the Changelog
  - Updated the Changelog
+v0.2.61
 
-## [v0.2.61](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.60...v0.2.61)
+## [v0.2.61](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.60...v0.2.61)
 
 Dr John Vidler (4):
  - Added a hook to manually deactivate the microphone when we deep sleep
@@ -86,8 +96,9 @@ Github Actions (2):
 
 Martin Williams (1):
  - Shorter reset to Bluetooth mode animation (#368)
+v0.2.60
 
-## [v0.2.60](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.59...v0.2.60)
+## [v0.2.60](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.59...v0.2.60)
 
 Carlos Pereira Atencio (5):
  - Fix issue when missing motion sensors crashed instead of panicking. (#360)
@@ -101,8 +112,9 @@ Dr John Vidler (1):
 
 Github Actions (1):
  - Updated the Changelog
+v0.2.59
 
-## [v0.2.59](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.58...v0.2.59)
+## [v0.2.59](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.58...v0.2.59)
 
 Carlos Pereira Atencio (2):
  - Reduce power consumption of LED matrix on power off mode. (#366)
@@ -113,8 +125,9 @@ Dr John Vidler (1):
 
 Github Actions (1):
  - Updated the Changelog
+v0.2.58
 
-## [v0.2.58](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.57...v0.2.58)
+## [v0.2.58](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.57...v0.2.58)
 
 Carlos Pereira Atencio (3):
  - CI: Add option to size diff workflow to configure samples repo commit. (#358)
@@ -126,8 +139,9 @@ Github Actions (1):
 
 Martin Williams (1):
  - MicroBitBLEManager - Move MICROBIT_BLE_MAXIMUM_BONDS to MicroBitConfig (#299)
+v0.2.57
 
-## [v0.2.57](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.56...v0.2.57)
+## [v0.2.57](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.56...v0.2.57)
 
 Dr John Vidler (2):
  - Disbled the MICROBIT_BLE_UTILITY_SERVICE_PAIRING configuration by default, enabled on BETA
@@ -135,8 +149,9 @@ Dr John Vidler (2):
 
 Github Actions (1):
  - Updated the Changelog
+v0.2.56
 
-## [v0.2.56](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.55...v0.2.56)
+## [v0.2.56](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.55...v0.2.56)
 
 Carlos Pereira Atencio (2):
  - Remove FXOS vestiges. (#302)
@@ -161,8 +176,9 @@ Github Actions (1):
 Martin Williams (2):
  - MicroBitUtilityService - replaces PR 178 (#287)
  - MicroBitCompassCalibrator avoid using max(int,int) (#290)
+v0.2.55
 
-## [v0.2.55](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.54...v0.2.55)
+## [v0.2.55](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.54...v0.2.55)
 
 Dr John Vidler (2):
  - Added additional workflow status badges
@@ -173,8 +189,9 @@ Github Actions (1):
 
 Martin Williams (1):
  - Fix BLE panic 071 (#334)
+v0.2.54
 
-## [v0.2.54](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.53...v0.2.54)
+## [v0.2.54](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.53...v0.2.54)
 
 Dr John Vidler (2):
  - Update update-changelog.yml
@@ -182,8 +199,9 @@ Dr John Vidler (2):
 
 Github Actions (1):
  - Updated the Changelog
+v0.2.53
 
-## [v0.2.53](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.52...v0.2.53)
+## [v0.2.53](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.52...v0.2.53)
 
 Carlos Pereira Atencio (1):
  - CI MakeCode: Use the default pxt-core and pxt-common-packages from package.json (#308)
@@ -201,8 +219,9 @@ Github Actions (2):
 
 Joe Finney (1):
  - Improve sound quality of virtual sound pin (#312)
+v0.2.52
 
-## [v0.2.52](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.51...v0.2.52)
+## [v0.2.52](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.51...v0.2.52)
 
 Dr John Vidler (5):
  - Update README.md with status badges
@@ -210,8 +229,9 @@ Dr John Vidler (5):
  - Merge branch 'master' of ssh://github.com/lancaster-university/codal-microbit-v2
  - Implemented new API requirements for Mixer2, Synth and virtual output pins
  - Snapshot v0.2.52
+v0.2.51
 
-## [v0.2.51](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.50...v0.2.51)
+## [v0.2.51](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_proto2_5...v0.2.51)
 
 Carlos Pereira Atencio (5):
  - Merge branch 'master' of https://github.com/lancaster-university/codal-microbit-v2
@@ -233,8 +253,68 @@ microbit-carlos (3):
  - Change yotta module.json dependencies to foundation org.
  - Revert "Update target name to reflect micro:bit version number"
  - Merge branch 'master' of https://github.com/lancaster-university/codal-microbit-v2
+v0.2.50calli_proto2_5
 
-## [v0.2.50](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.49...v0.2.50)
+## [v0.2.50calli_proto2_5](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_proto2_4...v0.2.50calli_proto2_5)
+
+Amerlander (1):
+ - update data logging files
+v0.2.50calli_proto2_4
+
+## [v0.2.50calli_proto2_4](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_proto2_3...v0.2.50calli_proto2_4)
+
+fabianhugo (1):
+ - fix
+v0.2.50calli_proto2_3
+
+## [v0.2.50calli_proto2_3](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_proto2_2...v0.2.50calli_proto2_3)
+
+fabianhugo (1):
+ - fix bug
+v0.2.50calli_proto2_2
+
+## [v0.2.50calli_proto2_2](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_proto2_1...v0.2.50calli_proto2_2)
+
+fabianhugo (1):
+ - uBit pins stay, only calliope pins are added, pxt makes the new connections, pin movings
+v0.2.50calli_proto2_1
+
+## [v0.2.50calli_proto2_1](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_proto2...v0.2.50calli_proto2_1)
+
+fabianhugo (1):
+ - updates compat with new names
+v0.2.50calli_proto2
+
+## [v0.2.50calli_proto2](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_RGBLED...v0.2.50calli_proto2)
+
+fabianhugo (1):
+ - update Pinout and signal names for the second prototype. PIN_IDs were only created where necessary, IDs for P17 and P18 were reused from microbit pin IDs
+
+hugo (2):
+ - adds 7 pins in 3 files, started from gittag v0.2.50
+ - add _ID to compat.h
+v0.2.50calli_RGBLED
+
+## [v0.2.50calli_RGBLED](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli_1...v0.2.50calli_RGBLED)
+
+hugo (2):
+ - proto1change
+ - adds PAD3 to P8, RGB to P9 and Grove1_A0 to P16
+v0.2.50calli_1
+
+## [v0.2.50calli_1](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50calli...v0.2.50calli_1)
+
+hugo (1):
+ - add _ID to compat.h
+v0.2.50calli
+
+## [v0.2.50calli](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.50...v0.2.50calli)
+
+hugo (1):
+ - adds 7 pins in 3 files, started from gittag v0.2.50
+v0.2.50
+
+## [v0.2.50](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.49...v0.2.50)
 
 Carlos Pereira Atencio (1):
  - CI: Enable manual triggers for size diff workflow. (#282)
@@ -248,8 +328,9 @@ Dr John Vidler (5):
 
 Joe Finney (1):
  - Introduce sound playback "until playback complete" option (#231)
+v0.2.49
 
-## [v0.2.49](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.48...v0.2.49)
+## [v0.2.49](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.48...v0.2.49)
 
 Carlos Pereira Atencio (7):
  - docstrings: Add granularity info to MicroBit::sleep() & remove return. (#248)
@@ -269,20 +350,23 @@ Dr John Vidler (5):
 
 Martin Williams (1):
  - MicroBitRadio: fix setFrequencyBand() and do not reset tx power and frequency band in enable() (#252)
+v0.2.48
 
-## [v0.2.48](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.47...v0.2.48)
+## [v0.2.48](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.47...v0.2.48)
 
 Dr John Vidler (2):
  - Swapped the ZIP_LISTS implementation for a plain CMake one, to allow builds on older CMake versions. Also only now halting the build if SOFTDEVICE_PRESENT is asserted with any value and DEVICE_BLE is not 1, and would therefore be an invalid, unbootable configuration
  - Snapshot v0.2.48
+v0.2.47
 
-## [v0.2.47](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.46...v0.2.47)
+## [v0.2.47](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.46...v0.2.47)
 
 Dr John Vidler (2):
  - Builds will now error if the old SOFTDEVICE_PRESENT flag is asserted by the target or user config. Please use DEVICE_BLE instead.
  - Snapshot v0.2.47
+v0.2.46
 
-## [v0.2.46](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.45...v0.2.46)
+## [v0.2.46](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.45...v0.2.46)
 
 Dr John Vidler (2):
  - Merge remote-tracking branch 'origin/isSilentAPI'
@@ -291,8 +375,9 @@ Dr John Vidler (2):
 Joe Finney (2):
  - Introduce audio output isplaying() API
  - Fix miscalculation in output latency
+v0.2.45
 
-## [v0.2.45](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.44...v0.2.45)
+## [v0.2.45](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.44...v0.2.45)
 
 Dr John Vidler (6):
  - Moved away from defining SOFTDEVICE_PRESENT directly in the target. If you require bluetooth, please define DEVICE_BLE as 1 in your codal.json
@@ -306,8 +391,9 @@ Joe Finney (3):
  - Improve temporal response of SoundOutputPin::setAnalogValue()
  - Introduce convenience functions
  - Introduce egress double buffering onto SoundEmojiSynth
+v0.2.44
 
-## [v0.2.44](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.43...v0.2.44)
+## [v0.2.44](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.43...v0.2.44)
 
 Carlos Pereira Atencio (1):
  - Fix typo in MicroBitConfig.h closing an #ifndef. (#239)
@@ -324,8 +410,9 @@ Joe Finney (3):
  - First build of codal-microbit-v2 without softdevice
  - First build of codal-microbit-v2 without softdevice
  - Merge branch 'nosd' of https://github.com/lancaster-university/codal-microbit-v2 into nosd
+v0.2.43
 
-## [v0.2.43](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.42...v0.2.43)
+## [v0.2.43](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.42...v0.2.43)
 
 Dr John Vidler (9):
  - Merge pull request #227 from martinwork/display-rotate
@@ -353,8 +440,9 @@ John Vidler (11):
 
 Martin Williams (1):
  - NRF52LEDMatrix::rotateTo
+v0.2.42
 
-## [v0.2.42](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.41...v0.2.42)
+## [v0.2.42](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.41...v0.2.42)
 
 Joe Finney (1):
  - Improve accuracy and sensitivity of microphone level detector
@@ -374,8 +462,9 @@ John Vidler (14):
  - Merge branch 'bug/panic-code-offset'
  - Merge branch 'master' of ssh://github.com/lancaster-university/codal-microbit-v2
  - Snapshot v0.2.42
+v0.2.41
 
-## [v0.2.41](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.40...v0.2.41)
+## [v0.2.41](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.40...v0.2.41)
 
 Carlos Pereira Atencio (3):
  - Add the DAPLink version to the data logging HTM page.
@@ -394,8 +483,9 @@ John Vidler (3):
  - Added a new error class which uses PanicCode as a base for Micro:bit v2 specific errors, and implemented these in the Accel and Compass classes
  - MicroBitLog now only checks the version string preamble, to avoid bugs where old logs are not detected during an erase cycle
  - Snapshot v0.2.41
+v0.2.40
 
-## [v0.2.40](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.39...v0.2.40)
+## [v0.2.40](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.39...v0.2.40)
 
 Carlos Pereira Atencio (1):
  - Add the DAPLink version to the data logging HTM page. (#196)
@@ -407,8 +497,9 @@ Dr John Vidler (3):
 
 Martin Williams (1):
  - Add MicroBitLog::readData (#177)
+v0.2.39
 
-## [v0.2.39](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.38...v0.2.39)
+## [v0.2.39](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.38...v0.2.39)
 
 Carlos Pereira Atencio (1):
  - Minor fix to read back the right amout of I2C data from the interface mcu. (#159)
@@ -427,16 +518,18 @@ Martin Williams (1):
 
 preglow (1):
  - Add polyphonic real-time synthesizer. (#185)
+v0.2.38
 
-## [v0.2.38](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.37...v0.2.38)
+## [v0.2.38](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.37...v0.2.38)
 
 Carlos Pereira Atencio (1):
  - Increase DAPLink I2C wait for data to be ready timeout. (#166)
 
 Dr John Vidler (1):
  - Snapshot v0.2.38
+v0.2.37
 
-## [v0.2.37](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.35...v0.2.37)
+## [v0.2.37](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.35...v0.2.37)
 
 Dr John Vidler (8):
  - Merge branch 'master' into input_pipeline
@@ -471,8 +564,9 @@ Joshua Hill (22):
  - [input-pipeline] Altered input pipeline gain scaling for 8bit
  - Merge remote-tracking branch 'upstream/master' into input_pipeline
  - [input-pipeline] Tweaked gain to maintain legacy functionality
+v0.2.35
 
-## [v0.2.35](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.34...v0.2.35)
+## [v0.2.35](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.34...v0.2.35)
 
 Dr John Vidler (4):
  - Snapshot v0.2.34
@@ -482,8 +576,9 @@ Dr John Vidler (4):
 
 Martin Williams (1):
  - Add MicroBitPowerManager::readInterfaceRequest()
+v0.2.34
 
-## [v0.2.34](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.33...v0.2.34)
+## [v0.2.34](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.33...v0.2.34)
 
 Joe Finney (9):
  - Update MicroBitLog serial mirroring to emit CRLF (#136)
@@ -501,29 +596,33 @@ Martin Williams (1):
 
 Paul Austin (1):
  - Option for Nordic Default UART characteristics (#139)
+v0.2.33
 
-## [v0.2.33](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.32...v0.2.33)
+## [v0.2.33](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.32...v0.2.33)
 
 Joe Finney (4):
  - Ensure mutual exclusion for all MicroBitLog APIs
  - Introduce workaround for back-to-back I2C Flash transactions using KL27 DAPLink firmware
  - Move to runtime configuration of I2C DAPLink interface
  - Snapshot v0.2.33
+v0.2.32
 
-## [v0.2.32](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.31...v0.2.32)
+## [v0.2.32](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.31...v0.2.32)
 
 Joe Finney (3):
  - Stabilize I2C communications between NRF52 and KL27 DAPLINK chip when running on battery power (#130)
  - Improvements and optimizations to MicroBitLog
  - Snapshot v0.2.32
+v0.2.31
 
-## [v0.2.31](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.30...v0.2.31)
+## [v0.2.31](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.30...v0.2.31)
 
 Joe Finney (2):
  - Introduce check for out of date bootloader settings page.
  - Snapshot v0.2.31
+v0.2.30
 
-## [v0.2.30](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.29...v0.2.30)
+## [v0.2.30](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.29...v0.2.30)
 
 Joe Finney (3):
  - Update Bluetooth bootloader (#134)
@@ -536,8 +635,9 @@ Matt Hillsdon (5):
  - Add a "Visual preview" graph on online mode. (#127)
  - Update Data Logging HTML - Add a warning for IE users. (#133)
  - Update data Logging HTML - Avoid overflowing graphWrapper when error shown. (#132)
+v0.2.29
 
-## [v0.2.29](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.28...v0.2.29)
+## [v0.2.29](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.28...v0.2.29)
 
 Joe Finney (5):
  - Logfs serial mirroring (#122)
@@ -557,14 +657,16 @@ Martin Williams (6):
 Matt Hillsdon (2):
  - Fix reset of Copy button (#118)
  - Add microbit.org-style header to MicroBitLog HTML page
+v0.2.28
 
-## [v0.2.28](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.27...v0.2.28)
+## [v0.2.28](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.27...v0.2.28)
 
 Joe Finney (2):
  - Introduce MICROBIT_LOG_EVT_LOG_FULL event
  - Snapshot v0.2.28
+v0.2.27
 
-## [v0.2.27](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.26...v0.2.27)
+## [v0.2.27](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.26...v0.2.27)
 
 Joe Finney (12):
  - Introduce MicroBitLog HTML+JS header resources
@@ -582,8 +684,9 @@ Joe Finney (12):
 
 Matt Hillsdon (1):
  - MicroBitLog: Introduce online mode, iframe-reload, styles (#111)
+v0.2.26
 
-## [v0.2.26](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.25...v0.2.26)
+## [v0.2.26](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.25...v0.2.26)
 
 Joe Finney (4):
  - Fix typo
@@ -593,8 +696,9 @@ Joe Finney (4):
 
 Martin Williams (1):
  - Mixer2 - Add isSilent() and fire SOUND/SILENCE events (#91)
+v0.2.25
 
-## [v0.2.25](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.24...v0.2.25)
+## [v0.2.25](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.24...v0.2.25)
 
 Joe Finney (3):
  - Enable I2C silicon errata workaround for high speed I2C
@@ -612,13 +716,15 @@ Sam Kent (3):
  - Add Partial Flashing and Memory Map documentation (#65)
  - Update MicroBitButton compat constructor.  (#75)
  - BLE Partial Flashing for MicroPython (#64)
+v0.2.24
 
-## [v0.2.24](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.23...v0.2.24)
+## [v0.2.24](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.23...v0.2.24)
 
 Joe Finney (1):
  - Snapshot v0.2.24
+v0.2.23
 
-## [v0.2.23](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.22...v0.2.23)
+## [v0.2.23](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.22...v0.2.23)
 
 Joe Finney (2):
  - Introduce Mixer2::setSilenceLevel() API
@@ -626,13 +732,15 @@ Joe Finney (2):
 
 Martin Williams (1):
  - Fix BLE disconnection (#43)
+v0.2.22
 
-## [v0.2.22](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.21...v0.2.22)
+## [v0.2.22](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.21...v0.2.22)
 
 Joe Finney (1):
  - Snapshot v0.2.22
+v0.2.21
 
-## [v0.2.21](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.20...v0.2.21)
+## [v0.2.21](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.20...v0.2.21)
 
 Joe Finney (13):
  - Add matching MicroBitButton constructor matching codal::Button
@@ -664,8 +772,9 @@ martinwork (3):
  - Match BLE powers with DAL
  - microbit_panic - no E and a delay between each character
  - MicroBitIOPinService pin order
+v0.2.20
 
-## [v0.2.20](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.19...v0.2.20)
+## [v0.2.20](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.19...v0.2.20)
 
 Joe Finney (16):
  - Align MicroBitStorage with CODAL APIs
@@ -687,20 +796,23 @@ Joe Finney (16):
 
 Sam Kent (1):
  - #define Timer MbedTimer
+v0.2.19
 
-## [v0.2.19](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.18...v0.2.19)
+## [v0.2.19](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.18...v0.2.19)
 
 Joe Finney (2):
  - Ensure configuration parameters for motion sensors are initialized
  - Snapshot v0.2.19
+v0.2.18
 
-## [v0.2.18](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.17...v0.2.18)
+## [v0.2.18](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.17...v0.2.18)
 
 Joe Finney (2):
  - Upstream PulseIn.h and PulseIn.cpp
  - Snapshot v0.2.18
+v0.2.17
 
-## [v0.2.17](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.16...v0.2.17)
+## [v0.2.17](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.16...v0.2.17)
 
 Joe Finney (8):
  - Increase brightness of active pixel in Compass Calibration UX (#16)
@@ -711,8 +823,9 @@ Joe Finney (8):
  - Set IRQ priority for pin IRQ events
  - Introduce blocking PulseIn behaviour (#15)
  - Snapshot v0.2.17
+v0.2.16
 
-## [v0.2.16](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.15...v0.2.16)
+## [v0.2.16](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.15...v0.2.16)
 
 Joe Finney (2):
  - Suppress deprecated API compat warning when compiling the compat code itself
@@ -723,14 +836,16 @@ Matt Hillsdon (1):
 
 Sam Kent (1):
  - Polyfilling mbed for extensions (#13)
+v0.2.15
 
-## [v0.2.15](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.14...v0.2.15)
+## [v0.2.15](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.14...v0.2.15)
 
 Joe Finney (2):
  - Defer START/STOP of synthesizer in SoundOutputPin
  - Snapshot v0.2.15
+v0.2.14
 
-## [v0.2.14](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.13...v0.2.14)
+## [v0.2.14](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.13...v0.2.14)
 
 Joe Finney (2):
  - Apply silence optimisation on virtual audio pin
@@ -739,8 +854,9 @@ Joe Finney (2):
 Matt Hillsdon (2):
  - Add support for stopping sound expressions. (#9)
  - Optimisation: Use a flag for stopping state. (#10)
+v0.2.13
 
-## [v0.2.13](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.12...v0.2.13)
+## [v0.2.13](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.12...v0.2.13)
 
 Joe Finney (8):
  - Add support for 8-bit mixer output
@@ -754,48 +870,56 @@ Joe Finney (8):
 
 Martin Williams (1):
  - Move to using SoftDevice S113 to reduce memory usage
+v0.2.12
 
-## [v0.2.12](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.11...v0.2.12)
+## [v0.2.12](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.11...v0.2.12)
 
 Joe Finney (1):
  - Snapshot v0.2.12
+v0.2.11
 
-## [v0.2.11](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.10...v0.2.11)
+## [v0.2.11](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.10...v0.2.11)
 
 Michal Moskal (1):
  - Snapshot v0.2.11
+v0.2.10
 
-## [v0.2.10](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.9...v0.2.10)
+## [v0.2.10](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.9...v0.2.10)
 
 Michal Moskal (1):
  - Snapshot v0.2.10
+v0.2.9
 
-## [v0.2.9](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.8...v0.2.9)
+## [v0.2.9](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.8...v0.2.9)
 
 Joe Finney (1):
  - Snapshot v0.2.9
 
 Matt Hillsdon (1):
  - SoundExpressions::play is now sync. (#2)
+v0.2.8
 
-## [v0.2.8](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.7...v0.2.8)
+## [v0.2.8](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.7...v0.2.8)
 
 Joe Finney (2):
  - Improve response time of back-to-back calls to SoundOutputPin
  - Snapshot v0.2.8
+v0.2.7
 
-## [v0.2.7](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.6...v0.2.7)
+## [v0.2.7](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.6...v0.2.7)
 
 Joe Finney (1):
  - Snapshot v0.2.7
+v0.2.6
 
-## [v0.2.6](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.5...v0.2.6)
+## [v0.2.6](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.5...v0.2.6)
 
 Joe Finney (2):
  - Ensure SoundOutputPin overrides base methods from codal::Pin
  - Snapshot v0.2.6
+v0.2.5
 
-## [v0.2.5](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.4...v0.2.5)
+## [v0.2.5](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.4...v0.2.5)
 
 Joe Finney (5):
  - Correct MIT license
@@ -806,15 +930,17 @@ Joe Finney (5):
 
 Matt Hillsdon (1):
  - Introduce MicroBitAudio output pipeline
+v0.2.4
 
-## [v0.2.4](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.3...v0.2.4)
+## [v0.2.4](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.3...v0.2.4)
 
 Joe Finney (3):
  - Introduce target-locked.json
  - Snapshot v0.2.3
  - Snapshot v0.2.4
+v0.2.3
 
-## [v0.2.3](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.2...v0.2.3)
+## [v0.2.3](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.2...v0.2.3)
 
 Joe Finney (7):
  - Ensure I2C Flash Geometry is loaded before it is used
@@ -827,8 +953,9 @@ Joe Finney (7):
 
 Matt Hillsdon (1):
  - Ensure last effect step generates enough samples.
+v0.2.2
 
-## [v0.2.2](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.1...v0.2.2)
+## [v0.2.2](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.1...v0.2.2)
 
 Joe Finney (9):
  - Introduce htonl/htons into MicroBitCompat
@@ -840,8 +967,9 @@ Joe Finney (9):
  - Gather USB Flash geometry on demand
  - Rename micro:bit face logo button on request
  - Snapshot v0.2.2
+v0.2.1
 
-## [v0.2.1](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.0...v0.2.1)
+## [v0.2.1](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.0...v0.2.1)
 
 Joe Finney (23):
  - Merge pull request #113 from microbit-foundation/update-bootloader
@@ -870,8 +998,9 @@ Joe Finney (23):
 
 Sam Kent (1):
  - Update bootloader.o
+v0.2.0
 
-## [v0.2.0](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.1.1...v0.2.0)
+## [v0.2.0](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.1.1...v0.2.0)
 
 Joe Finney (19):
  - Adopt NRF52ADC driver
@@ -998,8 +1127,9 @@ martinwork (88):
  - Merge MicroBit.cpp/h from upstream master
  - Merge remote-tracking branch 'upstream/master' into ble2-update-merge
  - Use codal::Compass/Accelerometer to match changed uBit
+v0.1.1
 
-## [v0.1.1](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.1.0...v0.1.1)
+## [v0.1.1](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.1.0...v0.1.1)
 
 Joe Finney (1):
  - Merge pull request #54 from microbit-foundation/i2c_instances
@@ -1011,14 +1141,16 @@ Michal Moskal (3):
 
 Raphael Gault (1):
  - i2c: Add second instance of i2c
+v0.1.0
 
-## [v0.1.0](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.16...v0.1.0)
+## [v0.1.0](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.16...v0.1.0)
 
 Michal Moskal (2):
  - Rename project to match repo name
  - Snapshot v0.1.0
+v0.0.16
 
-## [v0.0.16](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.15...v0.0.16)
+## [v0.0.16](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.15...v0.0.16)
 
 Michal Moskal (5):
  - Disable BLE by default as it doesn't compile
@@ -1026,8 +1158,9 @@ Michal Moskal (5):
  - Disable IRQs and set drive in panic
  - Rename output binary to MICROBIT
  - Snapshot v0.0.16
+v0.0.15
 
-## [v0.0.15](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.14...v0.0.15)
+## [v0.0.15](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.14...v0.0.15)
 
 Joe Finney (4):
  - Merge pull request #38 from microbit-foundation/LSM303_delay
@@ -1053,8 +1186,9 @@ Sam Kent (1):
 
 martinwork (1):
  - fix FLASH_PROGRAM_END calculation
+v0.0.14
 
-## [v0.0.14](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.13...v0.0.14)
+## [v0.0.14](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.13...v0.0.14)
 
 James Devine (1):
  - Snapshot v0.0.14
@@ -1062,19 +1196,22 @@ James Devine (1):
 Joe Finney (2):
  - Migrate codal_target_hal to upstream codal-nrf52
  - Bring speaker up in HiDrive mode by default
+v0.0.13
 
-## [v0.0.13](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.12...v0.0.13)
+## [v0.0.13](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.12...v0.0.13)
 
 Michal Moskal (2):
  - Use nrf.h not nrf52.h
  - Snapshot v0.0.13
+v0.0.12
 
-## [v0.0.12](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.11...v0.0.12)
+## [v0.0.12](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.11...v0.0.12)
 
 Michal Moskal (1):
  - Snapshot v0.0.12
+v0.0.11
 
-## [v0.0.11](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.10...v0.0.11)
+## [v0.0.11](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.10...v0.0.11)
 
 James Devine (2):
  - add Serial to model, and define DMESG SERIAL DEBUG
@@ -1084,8 +1221,9 @@ Joe Finney (3):
  - Introduce LED Matrix brightness constants
  - Add Temperature Sensing
  - Remove mbed dependencies
+v0.0.10
 
-## [v0.0.10](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.9...v0.0.10)
+## [v0.0.10](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.9...v0.0.10)
 
 James Devine (1):
  - update dev json to point to master
@@ -1100,14 +1238,16 @@ Joe Finney (9):
  - Configuration Update
  - Remove unecessary debug
  - Snapshot v0.0.10
+v0.0.9
 
-## [v0.0.9](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.8...v0.0.9)
+## [v0.0.9](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.8...v0.0.9)
 
 James Devine (2):
  - Set target to provide printf
  - Snapshot v0.0.9
+v0.0.8
 
-## [v0.0.8](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.6...v0.0.8)
+## [v0.0.8](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.6...v0.0.8)
 
 James Devine (10):
  - update model, sync with core changes
@@ -1120,21 +1260,24 @@ James Devine (10):
  - Snapshot v0.0.6-core-fastforward.0
  - Snapshot v0.0.7
  - Snapshot v0.0.8
+v0.0.6
 
-## [v0.0.6](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.5...v0.0.6)
+## [v0.0.6](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.5...v0.0.6)
 
 James Devine (1):
  - Snapshot v0.0.6
 
 Jonathan Austin (1):
  - Re-enable radio
+v0.0.5
 
-## [v0.0.5](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.4...v0.0.5)
+## [v0.0.5](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.4...v0.0.5)
 
 Joe Finney (1):
  - Snapshot v0.0.5
+v0.0.4
 
-## [v0.0.4](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.3...v0.0.4)
+## [v0.0.4](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.3...v0.0.4)
 
 Joe Finney (6):
  - Update to mbedos-5.1.3 TARGET_NRF52_MICROBIT_v1_43
@@ -1143,8 +1286,9 @@ Joe Finney (6):
  - Updates for v1.43
  - Update locations of dependencies
  - Snapshot v0.0.4
+v0.0.3
 
-## [v0.0.3](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.2...v0.0.3)
+## [v0.0.3](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.2...v0.0.3)
 
 James Devine (3):
  - Update target json
@@ -1157,8 +1301,9 @@ Joe Finney (5):
  - Update target specification to reference new repo locations
  - Add "HelloWorld" sample application
  - Snapshot v0.0.3
+v0.0.2
 
-## [v0.0.2](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.0.1...v0.0.2)
+## [v0.0.2](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.0.1...v0.0.2)
 
 James Devine (1):
  - Snapshot v0.0.2
