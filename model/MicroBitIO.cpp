@@ -47,10 +47,11 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     P0(ID_PIN_P0, P0_02, PIN_CAPABILITY_AD),
     P1(ID_PIN_P1, P0_03, PIN_CAPABILITY_AD),
     P2(ID_PIN_P2, P0_04, PIN_CAPABILITY_AD),
-    P3(ID_PIN_P3, P0_31, PIN_CAPABILITY_AD),
+    /// P3(ID_PIN_P3, P0_31, PIN_CAPABILITY_AD),
+    P3(ID_PIN_P3, P1_03, PIN_CAPABILITY_AD), //[Calliope] connect PAD3 (P1_03) : DELETE
     P4(ID_PIN_P4, P0_28, PIN_CAPABILITY_AD),
     P5(ID_PIN_P5, P0_14, PIN_CAPABILITY_AD),
-    P6(ID_PIN_P6, P1_5, PIN_CAPABILITY_AD),
+    P6(ID_PIN_P6, P1_05, PIN_CAPABILITY_AD),
     P7(ID_PIN_P7, P0_11, PIN_CAPABILITY_AD),
     P8(ID_PIN_P8, P0_10, PIN_CAPABILITY_AD),
     P9(ID_PIN_P9, P0_09, PIN_CAPABILITY_AD),
@@ -60,9 +61,25 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     P13(ID_PIN_P13, P0_17, PIN_CAPABILITY_AD),
     P14(ID_PIN_P14, P0_01, PIN_CAPABILITY_AD),
     P15(ID_PIN_P15, P0_13, PIN_CAPABILITY_AD),
-    P16(ID_PIN_P16, P1_02, PIN_CAPABILITY_AD),
-    P19(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
-    P20(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD),
+    /// P16(ID_PIN_P16, P1_02, PIN_CAPABILITY_AD),
+    A1RX(ID_PIN_P16, P0_29, PIN_CAPABILITY_AD), //[Calliope] connect Grove Analog PIN (P0_29)  : DELETE
+    /// P17(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), //[Calliope] P17
+    A1TX(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), //[Calliope] P17
+    P18(ID_PIN_P18, P0_31, PIN_CAPABILITY_AD), //[Calliope] P18
+    /// P19(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
+    A0SCL(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
+    /// P20(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD),
+    A0SDA(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD), //[Calliope] Place holder for micro:bit pin P3 (P0_31) : DELETE
+
+    // Calliope mini3
+    RGB(ID_PIN_RGB, P0_07, PIN_CAPABILITY_AD),// RGBLED       P0_07
+    M_A_IN1(ID_PIN_M_A_IN1, P1_01, PIN_CAPABILITY_AD),// Motor A IN1  P1_01
+    M_A_IN2(ID_PIN_M_A_IN2, P0_27, PIN_CAPABILITY_AD),// Motor A IN2  P0_27
+    M_B_IN1(ID_PIN_M_B_IN1, P1_07, PIN_CAPABILITY_AD),// Motor B IN1  P1_07
+    M_B_IN2(ID_PIN_M_B_IN2, P1_09, PIN_CAPABILITY_AD),// Motor B IN2  P1_09
+    M_MODE(ID_PIN_M_MODE, P1_06, PIN_CAPABILITY_AD),// Motor Mode   P1_06
+    //PAD3(ID_PIN_PAD3, P1_03, PIN_CAPABILITY_AD),// PAD 3          P1_03
+    //GA0(ID_PIN_GA0, P0_29, PIN_CAPABILITY_AD),// Grove Analog     P0_29
 
     // Other exposed pins
     logo(ID_PIN_LOGO, P1_04, PIN_CAPABILITY_AD),
@@ -85,14 +102,14 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     // Aliases
     col1(P4),
     col2(P7),
-    col3(P3),
+    col3(P18),
     col4(P6),
     col5(P10),
     buttonA(P5),
     buttonB(P11),
     face(logo)
 {
-    pins = 33;
+    pins = 41;
     NRF52Pin::adc = &a;
     NRF52Pin::touchSensor = &s;
 

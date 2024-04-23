@@ -223,7 +223,8 @@ typedef enum {
 #define MICROBIT_PIN_P0                             P0_02
 #define MICROBIT_PIN_P1                             P0_03
 #define MICROBIT_PIN_P2                             P0_04
-#define MICROBIT_PIN_P3                             P0_31
+/// #define MICROBIT_PIN_P3                             P0_31
+#define MICROBIT_PIN_P3                             P1_03 //[Calliope] connect PAD3 P1_03 : DELETE
 #define MICROBIT_PIN_P4                             P0_28
 #define MICROBIT_PIN_P5                             P0_14
 #define MICROBIT_PIN_P6                             P1_05
@@ -236,9 +237,23 @@ typedef enum {
 #define MICROBIT_PIN_P13                            P0_17
 #define MICROBIT_PIN_P14                            P0_01
 #define MICROBIT_PIN_P15                            P0_13
-#define MICROBIT_PIN_P16                            P1_02
+/// #define MICROBIT_PIN_P16                            P1_02
+#define MICROBIT_PIN_P16                            P0_29 //[Calliope] connect Grove Analog PIN (P0_29) : DELETE
+#define MICROBIT_PIN_P17                            P1_02 //[Calliope]
+#define MICROBIT_PIN_P18                            P0_31 //[Calliope]
 #define MICROBIT_PIN_P19                            P0_26
-#define MICROBIT_PIN_P20                            P1_00
+/// #define MICROBIT_PIN_P20                            P1_00
+#define MICROBIT_PIN_P20                            P1_00 //[Calliope] Place holder for micro:bit pin P3 (P0_31) : DELETE
+
+// Calliope mini3
+#define MICROBIT_PIN_RGB                            P0_07 // RGB
+#define MICROBIT_PIN_M_A_IN1                         P1_01 // Motor A IN1
+#define MICROBIT_PIN_M_A_IN2                         P0_27 // Motor A IN2
+#define MICROBIT_PIN_M_B_IN1                         P1_07 // Motor B IN1
+#define MICROBIT_PIN_M_B_IN2                         P1_09 // Motor B IN2
+#define MICROBIT_PIN_M_MODE                         P1_06 // Motor Mode
+//#define MICROBIT_PIN_PAD3                           P1_03 // PAD 3
+//#define MICROBIT_PIN_GA0                            P0_29 // Grove Analog
 
 // User Input
 #define MICROBIT_PIN_BUTTON_A                       P0_14
@@ -338,6 +353,18 @@ typedef enum {
 #define ID_PIN_P46       (DEVICE_ID_IO_P0 + 46)
 #define ID_PIN_P47       (DEVICE_ID_IO_P0 + 47)
 
+//Calliope mini3
+#define ID_PIN_RGB       (DEVICE_ID_IO_P0 + 51) // RGB
+#define ID_PIN_M_A_IN1    (DEVICE_ID_IO_P0 + 52) // Motor A IN1
+#define ID_PIN_M_A_IN2    (DEVICE_ID_IO_P0 + 53) // Motor A IN2
+#define ID_PIN_M_B_IN1    (DEVICE_ID_IO_P0 + 54) // Motor B IN1
+#define ID_PIN_M_B_IN2    (DEVICE_ID_IO_P0 + 55) // Motor B IN2
+#define ID_PIN_M_MODE    (DEVICE_ID_IO_P0 + 56) // Motor Mode
+//#define ID_PIN_PAD3      (DEVICE_ID_IO_P0 + 57) // PAD3
+//#define ID_PIN_GA0       (DEVICE_ID_IO_P0 + 58) // Grove Analog
+
+
+
 // For MakeCode extension compat. Delete ASAP.
 #define ID_PIN_FACE      (ID_PIN_LOGO)
 
@@ -370,7 +397,7 @@ namespace codal
             NRF52Pin          P0;           // P0_02
             NRF52Pin          P1;           // P0_03
             NRF52Pin          P2;           // P0_04
-            NRF52Pin          P3;           // P0_31
+            NRF52Pin          P3;           // P1_03 //[Calliope] connect PAD3 (P1_03) : DELETE COMMENT
             NRF52Pin          P4;           // P0_28
             NRF52Pin          P5;           // P0_14
             NRF52Pin          P6;           // P1_05
@@ -383,9 +410,16 @@ namespace codal
             NRF52Pin          P13;          // P0_17
             NRF52Pin          P14;          // P0_01
             NRF52Pin          P15;          // P0_13
-            NRF52Pin          P16;          // P1_02
-            NRF52Pin          P19;          // P0_26
-            NRF52Pin          P20;          // P1_00
+            ///NRF52Pin          P16;          // P1_02 //[Calliope] connect Grove Analog PIN (P0_29) : DELETE COMMENT
+            NRF52Pin          A1RX;
+            ///NRF52Pin          P17;          // //[Calliope] P1_02
+            NRF52Pin          A1TX;
+            NRF52Pin          P18;          // P0_31
+            ///NRF52Pin          P19;          // P0_26
+            NRF52Pin          A0SCL;
+            ///NRF52Pin          P20;          // P1_00 //[Calliope] Place holder for micro:bit pin P3 (P0_31) : DELETE COMMENT
+            NRF52Pin          A0SDA;
+  
 
             // Other exposed pins
             NRF52Pin          logo;         // P1_04
@@ -404,6 +438,16 @@ namespace codal
             NRF52Pin          usbTx;
             NRF52Pin          usbRx;
             NRF52Pin          irq1;         // P0_25
+
+            //Calliope mini3
+            NRF52Pin          RGB;          // RGBLED       P0_07
+            NRF52Pin          M_A_IN1;       // Motor A IN1  P1_01
+            NRF52Pin          M_A_IN2;       // Motor A IN2  P0_27
+            NRF52Pin          M_B_IN1;       // Motor B IN1  P1_07
+            NRF52Pin          M_B_IN2;       // Motor B IN2  P1_09
+            NRF52Pin          M_MODE;       // Motor Mode   P1_06
+            //NRF52Pin          PAD3;         // PAD 3        P1_03
+            //NRF52Pin          GA0;          // Grove Analog P0_29
 
             // Aliases
             NRF52Pin&         col1;

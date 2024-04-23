@@ -67,7 +67,7 @@ MicroBit::MicroBit() :
     io(adc, touchSensor),
     serial(io.usbTx, io.usbRx, NRF_UARTE0),
     _i2c(io.sda, io.scl),
-    i2c(io.P20, io.P19),
+    i2c(io.A0SDA, io.A0SCL),
     power(_i2c, io, systemTimer),
     flash(_i2c, io, power),
     internalFlash(MICROBIT_STORAGE_PAGE, 1, MICROBIT_CODEPAGESIZE),
@@ -162,6 +162,11 @@ int MicroBit::init()
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
         target_wait(KL27_POWER_ON_DELAY);
+
+    // turn RGB LEDs off
+    uint8_t rgbBuffer[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    neopixel_send_buffer(io.RGB, rgbBuffer, sizeof(rgbBuffer));
+    // io.RGB.setDigitalValue(0);
 
 #if CONFIG_ENABLED(DEVICE_BLE)
     // Ensure BLE bootloader settings are up to date.

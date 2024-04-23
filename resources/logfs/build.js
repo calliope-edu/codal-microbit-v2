@@ -50,7 +50,7 @@ if (process.argv[2] === "test") {
     .readdirSync(".")
     .filter((f) => /^sample-.+\.txt$/.test(f));
   // Enable local testing of included CSS/JS. Do it after byte count.
-  result = result.replace(/https:\/\/microbit.org\/dl\/\d\//g, "./");
+  result = result.replace(/https:\/\/go.calliope.cc\/assets\/dl\/\d\//g, "./");
   for (const trailerName of trailers) {
     const trailer = fs.readFileSync(trailerName);
     const htmlName = trailerName.replace(/\.txt$/, ".html");

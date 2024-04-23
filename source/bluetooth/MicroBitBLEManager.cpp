@@ -110,8 +110,7 @@ DEALINGS IN THE SOFTWARE.
 #endif
 
 const char *MICROBIT_BLE_MANUFACTURER = NULL;
-const char *MICROBIT_BLE_MODEL = "BBC micro:bit";
-const char *MICROBIT_BLE_VERSION[2] = { "2.0", "2.X" };
+const char *MICROBIT_BLE_MODEL = "Calliope mini";
 const char *MICROBIT_BLE_HARDWARE_VERSION = NULL;
 const char *MICROBIT_BLE_FIRMWARE_VERSION = MICROBIT_DAL_VERSION;
 const char *MICROBIT_BLE_SOFTWARE_VERSION = NULL;
@@ -445,9 +444,7 @@ void MicroBitBLEManager::init( ManagedString deviceName, ManagedString serialNum
       default:      versionIdx = 1; break;
     }
 
-    ManagedString modelVersion( MICROBIT_BLE_VERSION[versionIdx]);
-    ManagedString disName( MICROBIT_BLE_MODEL);
-    disName = disName + " V" + modelVersion;
+    ManagedString disName(MICROBIT_BLE_MODEL + ManagedString(" V2"));
 
     ble_dis_init_t disi;
     memset( &disi, 0, sizeof(disi));
