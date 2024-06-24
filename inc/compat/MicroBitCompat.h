@@ -417,4 +417,13 @@ namespace codal
 
 using namespace codal;
 
+//
+// MicroBitButton has dependencies on the definitions here, so needs to be included
+// after these are defined to avoid having to redeclare everything needlessly or have
+// user code manually include this after MicroBitCompat.h
+//
+// Without this, we end up with circular dependencies.
+//
+#include "MicroBitButton.h"
+
 #endif

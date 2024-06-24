@@ -273,7 +273,14 @@
 // Set to '1' to enable
 #ifndef MICROBIT_BLE_NORDIC_STYLE_UART
     #define MICROBIT_BLE_NORDIC_STYLE_UART 0
-#endif 
+#endif
+
+// Configure the radio maximum packet size
+// TODO: Update the range here once issue codal-microbit-v2#383 has been resolved
+// https://github.com/lancaster-university/codal-microbit-v2/issues/383
+#ifndef MICROBIT_RADIO_MAX_PACKET_SIZE
+    #define MICROBIT_RADIO_MAX_PACKET_SIZE          32
+#endif
 
 // Versioning options.
 // We use semantic versioning (http://semver.org/) to identify differnet versions of the micro:bit runtime.
@@ -305,4 +312,13 @@
 // 1: Data is invalidated (any may be hard erased, as per policy of the respective file system used)
 #ifndef CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH
     #define CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH    1
+#endif
+
+
+// Defines the MicrobitLog HTML header used
+// 0: data.microbit.org data logging experience
+// 1: basic experience supported by dl.js in this repository hosted on microbit.org
+// 2: "BBC micro:bit - the next gen" playground survey experience (this requires a specific HEX to generate the relevant data format)
+#ifndef MICROBIT_LOG_MODE
+    #define MICROBIT_LOG_MODE    0
 #endif
