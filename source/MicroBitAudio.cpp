@@ -37,9 +37,10 @@ MicroBitAudio* MicroBitAudio::instance = NULL;
 
 MicroBitAudio::MicroBitAudio(NRF52Pin &pin, NRF52Pin &speaker, NRF52ADC &adc, NRF52Pin &microphone, NRF52Pin &runmic):
     micEnabled(false),
+    micSleepState(false),
     speakerEnabled(true),
     pinEnabled(true),
-    pin(&pin), 
+    pin(&pin),
     speaker(speaker),
     synth(DEVICE_ID_SOUND_EMOJI_SYNTHESIZER_0),
     soundExpressionChannel(NULL),
@@ -57,7 +58,7 @@ MicroBitAudio::MicroBitAudio(NRF52Pin &pin, NRF52Pin &speaker, NRF52ADC &adc, NR
     synth.allowEmptyBuffers(true);
 
     mic = adc.getChannel(microphone, false);
-    adc.setSamplePeriod( 1e6 / 11000 );
+    adc.setSamplePeriod( 1e6 / CONFIG_MIXER_DEFAULT_CHANNEL_SAMPLERATE );
     mic->setGain(7, 0);
 
     // Implementers note: The order that the pipeline comes up here is quite sensitive. If we connect up to splitters after starting to
@@ -111,6 +112,7 @@ void MicroBitAudio::activateMic(){
 
 void MicroBitAudio::deactivateMic(){
     this->micEnabled = false;
+    //mic->disable();
     runmic.setDigitalValue(0);
     runmic.setHighDrive(false);
 }
@@ -238,6 +240,7 @@ int MicroBitAudio::setSleep(bool doSleep)
           delete pwm;
           pwm = NULL;
       }
+      this->micSleepState = this->micEnabled;
       deactivateMic();
     }
     else
@@ -247,7 +250,8 @@ int MicroBitAudio::setSleep(bool doSleep)
           status &= ~MICROBIT_AUDIO_STATUS_DEEPSLEEP;
           enable();
       }
-      activateMic();
+      if( this->micSleepState )
+        activateMic();
     }
    
     return DEVICE_OK;
