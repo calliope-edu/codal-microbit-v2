@@ -71,7 +71,7 @@ MicroBit::MicroBit() :
     io(adc, touchSensor),
     serial(io.usbTx, io.usbRx, NRF_UARTE0),
     _i2c(io.sda, io.scl),
-    i2c(io.P20, io.P19),
+    i2c(io.A0SDA, io.A0SCL),
     power(_i2c, io, systemTimer),
     flash(_i2c, io, power),
     internalFlash(MICROBIT_STORAGE_PAGE, 1, MICROBIT_CODEPAGESIZE),
@@ -302,6 +302,10 @@ int MicroBit::init()
     // Deschedule for a little while, just to allow for any components that finialise initialisation
     // as a background task, and to allow the power mamanger to repsonse to background events from the KL27
     // before any user code begins running.
+    
+    ManagedBuffer b(3*3); // Calliope: Clear internal RGB leds after bootup
+    b.fill(0);
+    neopixel_send_buffer(io.RGB, b);
     
     sleep(10);
 

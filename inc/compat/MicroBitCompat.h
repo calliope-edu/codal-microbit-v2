@@ -347,10 +347,20 @@ const uint16_t MICROBIT_ID_MBED_TICKER       __attribute__ ((deprecated)) = 83;
 #define MICROBIT_ID_IO_P13                                      ID_PIN_P13
 #define MICROBIT_ID_IO_P14                                      ID_PIN_P14
 #define MICROBIT_ID_IO_P15                                      ID_PIN_P15
-#define MICROBIT_ID_IO_P16                                      ID_PIN_P16
-#define MICROBIT_ID_IO_P19                                      ID_PIN_P19
-#define MICROBIT_ID_IO_P20                                      ID_PIN_P20
+#define MICROBIT_ID_IO_A1_RX                                    ID_PIN_P16 //#define MICROBIT_ID_IO_P16
+#define MICROBIT_ID_IO_A1_TX                                    ID_PIN_P17 //#define MICROBIT_ID_IO_P17
+#define MICROBIT_ID_IO_P18                                      ID_PIN_P18
+#define MICROBIT_ID_IO_A0_SCL                                   ID_PIN_P19
+#define MICROBIT_ID_IO_A0_SDA                                   ID_PIN_P20 //#define MICROBIT_ID_IO_P20 
 #define MICROBIT_ID_LOGO                                        ID_PIN_LOGO
+
+// Calliope mini3
+#define MICROBIT_ID_IO_RGB                                      ID_PIN_RGB
+#define MICROBIT_ID_IO_M_A_IN1                                  ID_PIN_M_A_IN1
+#define MICROBIT_ID_IO_M_A_IN2                                  ID_PIN_M_A_IN2
+#define MICROBIT_ID_IO_M_B_IN1                                  ID_PIN_M_B_IN1
+#define MICROBIT_ID_IO_M_B_IN2                                  ID_PIN_M_B_IN2
+#define MICROBIT_ID_IO_M_MODE                                   ID_PIN_M_MODE
 
 // For MakeCode extension compat. Delete ASAP.
 #define MICROBIT_ID_FACE                                        ID_PIN_FACE

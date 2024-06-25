@@ -4,7 +4,7 @@
   "description": "CODAL models for microbit",
   "license": "MIT",
   "dependencies": {
-    "codal-core": "git@github.com:microbit-foundation/codal-core.git#master",
+    "codal-core": "git@github.com:calliope-edu/codal-core.git#june24-cmini3",
     "codal-nrf52": "git@github.com:microbit-foundation/codal-nrf52.git#master",
     "codal-microbit-nrf5sdk": "git@github.com:microbit-foundation/codal-microbit-nrf5sdk.git#master"
   },
