@@ -60,9 +60,7 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     P13(ID_PIN_P13, P0_17, PIN_CAPABILITY_AD),
     P14(ID_PIN_P14, P0_01, PIN_CAPABILITY_AD),
     P15(ID_PIN_P15, P0_13, PIN_CAPABILITY_AD),
-    P19(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
     A1RX(ID_PIN_P16, P0_29, PIN_CAPABILITY_AD), //[Calliope] connect Grove Analog PIN (P0_29)  : DELETE
-    P20(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD),
     A1TX(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), //[Calliope] P17
     P18(ID_PIN_P18, P0_31, PIN_CAPABILITY_AD), //[Calliope] P18
     A0SCL(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
@@ -105,7 +103,7 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     buttonB(P11),
     face(logo)
 {
-    pins = 33;
+    pins = 41;
     NRF52Pin::adc = &a;
     NRF52Pin::touchSensor = &s;
 
