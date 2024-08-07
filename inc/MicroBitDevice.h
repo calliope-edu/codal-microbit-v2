@@ -96,7 +96,7 @@ namespace codal
     void microbit_reset();
 
     /**
-     * Determine the version of microbit-dal currently running.
+     * For DAL compatibility, determine the version of DAL/CODAL currently running.
      * @return a pointer to a character buffer containing a representation of the semantic version number.
      */
     const char * microbit_dal_version();
@@ -169,7 +169,5 @@ namespace codal
 };
 
 extern codal::MicroBitDevice *microbit_device_instance;
-
-using namespace codal;
 
 #endif

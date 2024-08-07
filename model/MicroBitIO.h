@@ -260,9 +260,6 @@ typedef enum {
 #define MICROBIT_PIN_BUTTON_B                       P0_23
 #define MICROBIT_PIN_LOGO_TOUCH                     P1_04
 
-// FOR MakeCode extension compat. Delete ASAP.
-#define MICROBIT_PIN_FACE_TOUCH                     MICROBIT_PIN_LOGO_TOUCH
-
 // Audio
 #define MICROBIT_PIN_RUN_MIC                        P0_20
 #define MICROBIT_PIN_MIC_IN                         P0_05
@@ -457,7 +454,6 @@ namespace codal
             NRF52Pin&         col5;
             NRF52Pin&         buttonA;
             NRF52Pin&         buttonB;
-            NRF52Pin&         face;         // Temporary compat for MakeCode extension. Delete ASAP.
 
 
             /**

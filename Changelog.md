@@ -4,35 +4,76 @@
 For official release notes, please see Releases.md
 
 The current tag uses the following library versions:
- - codal-core = https://github.com/lancaster-university/codal-core/tree/7b6f9df3b586f8dd9bede4bd0baa0cdc212b6ba2
- - codal-nrf52 = https://github.com/lancaster-university/codal-nrf52/tree/0643733703b4f8f788af81a996f40d1f1a1527bc
+ - codal-core = https://github.com/lancaster-university/codal-core/tree/509086cc8590465041b15493ab52b56e7071c110
+ - codal-nrf52 = https://github.com/lancaster-university/codal-nrf52/tree/8802eb49140e0389e535cb6160d9080efd951ba7
  - codal-microbit-nrf5sdk = https://github.com/microbit-foundation/codal-microbit-nrf5sdk/tree/d41d5c7ebe53a1d01935e61d4ffa891e5112e119
+
+## [v0.2.67](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.66...v0.2.67)
+
+ - Updated the Changelog (by Github Actions)
+ - Update Changelog.md (by Dr John Vidler)
+ - CI: Restore building MakeCode with Docker. (#407) (by Carlos Pereira Atencio)
+ - CI: Update versions of actions to remove warnings about node 16. (#408) (by Carlos Pereira Atencio)
+ - Remove uBit.io.face as it was a temp additional that is no longer needed. (#410) (by Carlos Pereira Atencio)
+ - Added definitions to match the Makecode effects parameters (#417) (by Dr John Vidler)
+ - CI:Update Changelog script to include changes in lib dependencies. (#420) (by Carlos Pereira Atencio)
+ - Set uBit.io.logo to capacitive touch mode by default. (#418) (by Carlos Pereira Atencio)
+ - CI: PXT build workaround due to deprecated PXT docker image type. (#435) (by Carlos Pereira Atencio)
+ - CI: Update macOS runner version as 11 is deprecated. (#436) (by Carlos Pereira Atencio)
+ - Populate MICROBIT_DAL_VERSION and add microbit_dal_version(). (#434) (by Carlos Pereira Atencio)
+ - Addition of getRows(n, k) and getNumberOfRows(n) to the datalogger.  (#431) (by KierPalin)
+ - Ensure header files and .cpp files use the codal namespace appropriately. (#437) (by Carlos Pereira Atencio)
+ - Snapshot v0.2.67 (by Carlos Pereira Atencio)
+
+### codal-core ([992c0b1...509086c](https://github.com/lancaster-university/codal-core/compare/992c0b11a0eb2a1edca9c2f76821f89a99a3acec...509086cc8590465041b15493ab52b56e7071c110))
+
+ - Update docstrings for LevelDetector threshold methods. (#167) (by Carlos Pereira Atencio)
+ - Display scroll an empty char if the requested char is out-of-range. (#168) (by Carlos Pereira Atencio)
+ - Better version support symbols for user applications (#169) (by Dr John Vidler)
+ - Ensure .cpp files are `using namespace codal`. (#170) (by Carlos Pereira Atencio)
+ - Add config flag to enable/disable adding codal to the global namespace. (#171) (by Carlos Pereira Atencio)
+
+### codal-nrf52 ([0643733...8802eb4](https://github.com/lancaster-university/codal-nrf52/compare/0643733703b4f8f788af81a996f40d1f1a1527bc...8802eb49140e0389e535cb6160d9080efd951ba7))
+
+ - NRF52Pin::wasTouched() default w/o args to use current pin touch mode state. (#53) (by Carlos Pereira Atencio)
+ - Ensure all .cpp files have `using namespace codal`. (#54) (by Carlos Pereira Atencio)
+ - Set neopixel functions inside the codal namespace. (by Carlos Pereira Atencio)
+ - Wrap `using namespace` in headers with codal config flag. (#43) (by Carlos Pereira Atencio)
+
+## [v0.2.66](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.65...v0.2.66)
+
+ - Updated the Changelog (by Github Actions)
+ - Update Changelog.md (by Dr John Vidler)
+ - Snapshot v0.2.66 (by Dr John Vidler)
+
+### codal-core ([7b6f9df...992c0b1](https://github.com/lancaster-university/codal-core/compare/7b6f9df3b586f8dd9bede4bd0baa0cdc212b6ba2...992c0b11a0eb2a1edca9c2f76821f89a99a3acec))
+
+ - Applying the patch suggested by @dpgeorge to handle large receiving buffers for pullInto() (by Dr John Vidler)
 
 ## [v0.2.65](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.63...v0.2.65)
 
-Carlos Pereira Atencio (1):
- - Set MICROBIT_RADIO_MAX_PACKET_SIZE as a configurable value. (#387)
+ - Updated the Changelog (by Github Actions)
+ - Corrected Changelog.md after my tag snarfu (by Dr John Vidler)
+ - Refined the changelog script to only update the head of the log under normal cases (by Dr John Vidler)
+ - Set MICROBIT_RADIO_MAX_PACKET_SIZE as a configurable value. (#387) (by Carlos Pereira Atencio)
+ - Change datalog CSV download mime type from text/plain to text/csv (#339) (by Martin Williams)
+ - Added a new CONFIG_MIXER_DEFAULT_CHANNEL_SAMPLERATE constant for channels with no defined rate to use (by Dr John Vidler)
+ - Fixed a bug where in some conditions the microphone would not auto-start (by Dr John Vidler)
+ - Update MicroBitLog to support 3 header formats (#399) (by Matt Hillsdon)
+ - Added MicroBitButton.h to the required includes for MicroBitCompat.h so its still included in the build when not using bluetooth (by Dr John Vidler)
+ - Moved the MicroBitButton inclusion to the tail of MicroBitCompat to avoid circular dependencies or a bunch of needless forward declarations (by Dr John Vidler)
+ - Bumped the default Mixer2 channel sample rate back up to 44100 (by Dr John Vidler)
+ - Snapshot v0.2.65 (by Dr John Vidler)
 
-Dr John Vidler (10):
- - Merged patch to fix the various sample rate issues
- - Corrected Changelog.md after my tag snarfu
- - Refined the changelog script to only update the head of the log under normal cases
- - Resolved conflict in the manual updates to the ChangeLog
- - Added a new CONFIG_MIXER_DEFAULT_CHANNEL_SAMPLERATE constant for channels with no defined rate to use
- - Fixed a bug where in some conditions the microphone would not auto-start
- - Added MicroBitButton.h to the required includes for MicroBitCompat.h so its still included in the build when not using bluetooth
- - Moved the MicroBitButton inclusion to the tail of MicroBitCompat to avoid circular dependencies or a bunch of needless forward declarations
- - Bumped the default Mixer2 channel sample rate back up to 44100
- - Snapshot v0.2.65
+### codal-core ([63f017f...7b6f9df](https://github.com/lancaster-university/codal-core/compare/63f017fdcd12aca769264c36fe47e6071a40e502...7b6f9df3b586f8dd9bede4bd0baa0cdc212b6ba2))
 
-Github Actions (1):
- - Updated the Changelog
+ - Updated to correctly restore mic state on returning from a deep sleep (by Dr John Vidler)
+ - Typo (by Dr John Vidler)
+ - Working audio resampling rates if requested by downstream components of a SplitterChannel (by Dr John Vidler)
 
-Martin Williams (1):
- - Change datalog CSV download mime type from text/plain to text/csv (#339)
+### codal-microbit-nrf5sdk ([5714cbe...d41d5c7](https://github.com/microbit-foundation/codal-microbit-nrf5sdk/compare/5714cbe338c3544793bbb841a7ae81708a3ffae1...d41d5c7ebe53a1d01935e61d4ffa891e5112e119))
 
-Matt Hillsdon (1):
- - Update MicroBitLog to support 3 header formats (#399)
+ - Revert "Quieted a warning on fallthrough, as this is intended behaviour" (by Dr John Vidler)
 
 ## [v0.2.63](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.62...v0.2.63)
 
