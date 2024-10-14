@@ -50,7 +50,7 @@
     "generate_hex": true,
     "libraries": [
         {
-            "branch": "dae905bc9eb05a409bfc503e22ba65297723c099",
+            "branch": "4fa692cb3540b26503e50706e2cc46090ef013a3",
             "name": "codal-core",
             "type": "git",
             "url": "https://github.com/calliope-edu/codal-core"
