@@ -51,6 +51,8 @@ static const uint32_t reflash_status = 0xffffffff;
   */
 MicroBit::MicroBit() :
 
+static volatile uint32_t __attribute__ ((section (".noinit"))) reset_click_count; // for tripple Reset 
+
 #if CONFIG_ENABLED(DEVICE_BLE)
     bleManager(),
     ble( &bleManager),
@@ -166,7 +168,20 @@ int MicroBit::init()
 
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
+        DMESG("HARD_RESET:");
+        reset_click_count = 0;
         target_wait(KL27_POWER_ON_DELAY);
+    }
+    else
+    {
+        reset_click_count++;
+    }
+    DMESG("RESET_CLICK_COUNT [%x]: %d", &reset_click_count, reset_click_count);
+    if (reset_click_count == 3)
+    {
+        DMESG("TRIPLE_CLICK: ENTERING PAIRING MODE");
+    }
+
 
 #if CONFIG_ENABLED(DEVICE_BLE)
     // Ensure BLE bootloader settings are up to date.
@@ -201,6 +216,7 @@ int MicroBit::init()
 #endif
 #endif
     status |= DEVICE_COMPONENT_STATUS_IDLE_TICK;
+    status |= DEVICE_COMPONENT_STATUS_SYSTEM_TICK; // for tripple reset
 
     // Set IRQ priorities for peripherals we use.
     // Note that low values have highest priority, and only 2, 3, 4, 5 and 7 are available with SoftDevice enabled.
@@ -234,8 +250,8 @@ int MicroBit::init()
     sleep(100);
     // Animation
     uint8_t x = 0; uint8_t y = 0;
-    while ((buttonA.isPressed() && buttonB.isPressed() && i<25) || RebootMode != NULL || flashIncomplete != NULL)
-    {
+    bool triple_reset = (reset_click_count == 3);
+    while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL)    {
         display.image.setPixelValue(x,y,255);
         sleep(50);
         i++; x++;
@@ -253,6 +269,7 @@ int MicroBit::init()
             }
             delete RebootMode;
             delete flashIncomplete;
+            reset_click_count = 0;
 
             // Start the BLE stack, if it isn't already running.
             bleManager.init( ManagedString( microbit_friendly_name()), getSerial(), messageBus, storage, true, version.board);
@@ -388,6 +405,17 @@ void MicroBit::idleCallback()
     codal_dmesg_flush();
 #endif
 #endif
+}
+
+void MicroBit::periodicCallback()
+{
+    // Zero our reset_count once the micro:bit has been running for 5 seconds 
+    static int timeout = 500 / (SCHEDULER_TICK_PERIOD_US/1000);
+    if (timeout-- == 0 && reset_click_count != 0)
+    {
+        reset_click_count = 0;
+        status &= ~DEVICE_COMPONENT_STATUS_SYSTEM_TICK;
+    }
 }
 
 /**
