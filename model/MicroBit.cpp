@@ -43,6 +43,8 @@ static const MatrixPoint ledMatrixPositions[5*5] =
 };
 
 static const uint32_t reflash_status = 0xffffffff;
+static volatile uint32_t __attribute__ ((section (".noinit"))) reset_click_count; // for tripple Reset 
+
 /**
   * Constructor.
   *
@@ -51,7 +53,6 @@ static const uint32_t reflash_status = 0xffffffff;
   */
 MicroBit::MicroBit() :
 
-static volatile uint32_t __attribute__ ((section (".noinit"))) reset_click_count; // for tripple Reset 
 
 #if CONFIG_ENABLED(DEVICE_BLE)
     bleManager(),
