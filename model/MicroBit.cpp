@@ -168,7 +168,7 @@ int MicroBit::init()
     status |= DEVICE_INITIALIZED;
 
     // On a hard reset, wait for the USB interface chip to come online.
-    if(NRF_POWER->RESETREAS == 0)
+    if(NRF_POWER->RESETREAS == 0){
         DMESG("HARD_RESET:");
         reset_click_count = 0;
         target_wait(KL27_POWER_ON_DELAY);
