@@ -251,7 +251,9 @@ extern uint32_t __data_end__;
 // Set to '1' to enable
 #ifndef MICROBIT_BLE_NORDIC_STYLE_UART
 #define MICROBIT_BLE_NORDIC_STYLE_UART 0
-#endif 
+#endif
+
+#define DMESG_SERIAL_DEBUG 1
 
 // Versioning options.
 // We use semantic versioning (http://semver.org/) to identify differnet versions of the micro:bit runtime.
