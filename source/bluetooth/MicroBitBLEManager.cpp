@@ -244,20 +244,20 @@ void MicroBitBLEManager::init( ManagedString deviceName, ManagedString serialNum
         MICROBIT_BLE_OPEN = 0;
 
         // Display special mode indicator if display is available
-        MicroBitDisplay* display = MicroBitDisplay::getInstance();
-        if (display)
-        {
-            // Show a special pattern or text to indicate special mode
-            const uint8_t special_mode_icon[] = {
-                0, 1, 0, 1, 0,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0
-            };
-            display->print(MicroBitImage(5, 5, special_mode_icon));
-            fiber_sleep(1000);
-        }
+        // MicroBitDisplay* display = MicroBitDisplay::getInstance();
+        // if (display)
+        // {
+        //     // Show a special pattern or text to indicate special mode
+        //     const uint8_t special_mode_icon[] = {
+        //         0, 1, 0, 1, 0,
+        //         1, 0, 1, 0, 1,
+        //         0, 1, 0, 1, 0,
+        //         1, 0, 1, 0, 1,
+        //         0, 1, 0, 1, 0
+        //     };
+        //     display->print(MicroBitImage(5, 5, special_mode_icon));
+        //     fiber_sleep(1000);
+        // }
 
         MICROBIT_DEBUG_DMESG("Entered SPECIAL MODE with custom BLE settings");
 
