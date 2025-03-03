@@ -325,4 +325,12 @@ class MicroBitBLEManager : public CodalComponent
 
 #endif
 
+
+  /**
+    * Check if the special mode should be activated by detecting A+B+reset button press combination.
+    * 
+    * @return true if A+B+reset are pressed, false otherwise.
+    */
+    bool isSpecialMode();
+
 #endif

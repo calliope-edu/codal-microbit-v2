@@ -233,6 +233,36 @@ void MicroBitBLEManager::init( ManagedString deviceName, ManagedString serialNum
     if ( this->status & DEVICE_COMPONENT_RUNNING)
       return;
 
+    // Check for special mode
+    bool specialMode = isSpecialMode();
+
+    if (specialMode)
+    {
+        MICROBIT_BLE_SECURITY_MODE = 2; // SECURITY_MODE_ENCRYPTION_NO_MITM
+        MICROBIT_BLE_DFU_SERVICE = 1;
+        MICROBIT_BLE_WHITELIST = 1;
+        MICROBIT_BLE_OPEN = 0;
+
+        // Display special mode indicator if display is available
+        MicroBitDisplay* display = MicroBitDisplay::getInstance();
+        if (display)
+        {
+            // Show a special pattern or text to indicate special mode
+            const uint8_t special_mode_icon[] = {
+                0, 1, 0, 1, 0,
+                1, 0, 1, 0, 1,
+                0, 1, 0, 1, 0,
+                1, 0, 1, 0, 1,
+                0, 1, 0, 1, 0
+            };
+            display->print(MicroBitImage(5, 5, special_mode_icon));
+            fiber_sleep(1000);
+        }
+
+        MICROBIT_DEBUG_DMESG("Entered SPECIAL MODE with custom BLE settings");
+
+    }
+
     MICROBIT_DEBUG_DMESG( "MicroBitBLEManager::init");
     
     MICROBIT_DEBUG_DMESG( "NRF_SDH_BLE_VS_UUID_COUNT = %d", (int) NRF_SDH_BLE_VS_UUID_COUNT);
@@ -1673,5 +1703,24 @@ void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)
     target_panic( panic);
 }
 
+
+/**
+ * Check if the special mode should be activated by detecting A+B+reset button press combination.
+ * 
+ * @return true if A+B+reset are pressed, false otherwise.
+ */
+ bool MicroBitBLEManager::isSpecialMode()
+ {
+     // Get references to the button instances
+     MicroBitButton buttonA(MICROBIT_PIN_BUTTON_A, MICROBIT_ID_BUTTON_A);
+     MicroBitButton buttonB(MICROBIT_PIN_BUTTON_B, MICROBIT_ID_BUTTON_B);
+     
+     // Check if both A and B buttons are pressed during startup
+     bool specialMode = buttonA.isPressed() && buttonB.isPressed();
+     
+     MICROBIT_DEBUG_DMESG("isSpecialMode: %d", specialMode ? 1 : 0);
+     
+     return specialMode;
+ }
 
 #endif // CONFIG_ENABLED(DEVICE_BLE)
