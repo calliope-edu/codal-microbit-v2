@@ -1673,5 +1673,16 @@ void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)
     target_panic( panic);
 }
 
+void MicroBitBLEManager::configureAdvertising(bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds)
+{
+    ble_advdata_t advdata;
+    memset(&advdata, 0, sizeof(advdata));
+    advdata.name_type = BLE_ADVDATA_FULL_NAME;
+    advdata.flags = !whitelist && discoverable
+                    ? BLE_GAP_ADV_FLAG_BR_EDR_NOT_SUPPORTED | BLE_GAP_ADV_FLAG_LE_GENERAL_DISC_MODE
+                    : BLE_GAP_ADV_FLAG_BR_EDR_NOT_SUPPORTED;
+
+    microbit_ble_configureAdvertising(connectable, discoverable, whitelist, interval_ms, timeout_seconds, &advdata);
+}
 
 #endif // CONFIG_ENABLED(DEVICE_BLE)

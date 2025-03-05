@@ -291,6 +291,17 @@ class MicroBitBLEManager : public CodalComponent
     * Ensure service changed indication pending for all peers
     */
     void servicesChanged();
+
+    /**
+     * Configure advertising parameters.
+     *
+     * @param connectable If true, the device will be connectable.
+     * @param discoverable If true, the device will be discoverable.
+     * @param whitelist If true, the device will use a whitelist.
+     * @param interval_ms The advertising interval in milliseconds.
+     * @param timeout_seconds The advertising timeout in seconds.
+     */
+    void configureAdvertising(bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds);
       
   private:
     /**
