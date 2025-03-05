@@ -73,7 +73,8 @@ class MicroBitBLEService
         uint8_t    *value,
         uint16_t    init_len,
         uint16_t    max_len,
-        uint16_t    props);
+        uint16_t    props,
+        ecurity_req_t  security_mode = MICROBIT_BLE_SECURITY_MODE);
 
     /**
       * Callback. Invoked when any of our attributes are written via BLE.

@@ -94,11 +94,13 @@ void MicroBitBLEService::CreateCharacteristic(
     uint8_t        *value,
     uint16_t        init_len,
     uint16_t        max_len,
-    uint16_t        props)
+    uint16_t        props,
+    security_req_t  security_mode = MICROBIT_BLE_SECURITY_MODE // Default value
+)
 {
     ble_add_char_params_t params;
     memset( &params, 0, sizeof( params));
-    
+
     params.uuid                 = uuid;
     params.uuid_type            = bs_uuid_type;
     params.max_len              = max_len;
@@ -113,23 +115,18 @@ void MicroBitBLEService::CreateCharacteristic(
     if ( props & microbit_propINDICATE)        params.char_props.indicate          = 1;
     if ( props & microbit_propSIGNED_WRITES)   params.char_props.auth_signed_wr    = 1;
     if ( props & microbit_propBROADCAST)       params.char_props.broadcast         = 1;
-
-    //ble_gatt_char_ext_props_t   char_ext_props;
-    
     if ( props & microbit_propREADAUTH)        params.is_defered_read  = true;
     if ( props & microbit_propWRITEAUTH)       params.is_defered_write = true;
 
-    MICROBIT_DEBUG_DMESG( "MICROBIT_BLE_SECURITY_MODE %d", (int) MICROBIT_BLE_SECURITY_MODE);
-          
-    params.read_access          = ( security_req_t) MICROBIT_BLE_SECURITY_MODE;
-    params.write_access         = ( security_req_t) MICROBIT_BLE_SECURITY_MODE;
-    params.cccd_write_access    = ( security_req_t) MICROBIT_BLE_SECURITY_MODE;
-    
+    params.read_access          = security_mode;
+    params.write_access         = security_mode;
+    params.cccd_write_access    = security_mode;
+
     params.is_value_user        = true; // All values content stored in the application
     
     //ble_add_char_user_desc_t    *p_user_descr;
     //ble_gatts_char_pf_t         *p_presentation_format;
-    
+
     MICROBIT_BLE_ECHK( characteristic_add( bs_service_handle, &params, ( ble_gatts_char_handles_t *) charHandles( idx)));
     
     MICROBIT_DEBUG_DMESG( "MicroBitBLEService::CreateCharacteristic( %x) = %d %d %d %d",
