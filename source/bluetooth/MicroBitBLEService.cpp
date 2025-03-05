@@ -95,7 +95,7 @@ void MicroBitBLEService::CreateCharacteristic(
     uint16_t        init_len,
     uint16_t        max_len,
     uint16_t        props,
-    uint16_t  security_mode
+    uint16_t        security_mode
 )
 {
     ble_add_char_params_t params;
@@ -118,9 +118,9 @@ void MicroBitBLEService::CreateCharacteristic(
     if ( props & microbit_propREADAUTH)        params.is_defered_read  = true;
     if ( props & microbit_propWRITEAUTH)       params.is_defered_write = true;
 
-    params.read_access          = security_mode;
-    params.write_access         = security_mode;
-    params.cccd_write_access    = security_mode;
+    params.read_access          = static_cast<security_req_t>(security_mode);
+    params.write_access         = static_cast<security_req_t>(security_mode);
+    params.cccd_write_access    = static_cast<security_req_t>(security_mode);
 
     params.is_value_user        = true; // All values content stored in the application
     
