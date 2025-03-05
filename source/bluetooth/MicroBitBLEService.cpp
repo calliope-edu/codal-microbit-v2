@@ -95,7 +95,7 @@ void MicroBitBLEService::CreateCharacteristic(
     uint16_t        init_len,
     uint16_t        max_len,
     uint16_t        props,
-    security_req_t  security_mode = MICROBIT_BLE_SECURITY_MODE // Default value
+    uint16_t  security_mode = MICROBIT_BLE_SECURITY_MODE // Default value
 )
 {
     ble_add_char_params_t params;
