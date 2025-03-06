@@ -418,7 +418,8 @@ void MicroBitBLEManager::init( ManagedString deviceName, ManagedString serialNum
     MICROBIT_BLE_ECHK( pm_peer_id_list( peer_list, &list_size, PM_PEER_ID_INVALID, PM_PEER_ID_LIST_ALL_ID ));
     MICROBIT_BLE_ECHK( pm_whitelist_set( list_size ? peer_list : NULL, list_size));
     MICROBIT_BLE_ECHK( pm_device_identities_list_set( list_size ? peer_list : NULL, list_size));
-    connectable = discoverable = whitelist = list_size > 0;
+    connectable = discoverable = true;
+    whitelist = list_size > 0;
     MICROBIT_DEBUG_DMESG( "whitelist size = %d", list_size);
 #endif
     
