@@ -39,6 +39,7 @@ DEALINGS IN THE SOFTWARE.
 #include "MicroBitDisplay.h"
 #include "ExternalEvents.h"
 #include "MicroBitButton.h"
+#include "ble_advdata.h"
 
 #define MICROBIT_BLE_PAIR_REQUEST 0x01
 #define MICROBIT_BLE_PAIR_COMPLETE 0x02
