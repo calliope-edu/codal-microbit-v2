@@ -300,8 +300,9 @@ class MicroBitBLEManager : public CodalComponent
      * @param whitelist If true, the device will use a whitelist.
      * @param interval_ms The advertising interval in milliseconds.
      * @param timeout_seconds The advertising timeout in seconds.
+     * @param custom_advdata Custom advertising data to use. If nullptr, the default advertising data will be used.
      */
-    void configureAdvertising(bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds);
+     void configureAdvertising(bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds, ble_advdata_t *custom_advdata = nullptr);
       
   private:
     /**
