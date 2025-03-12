@@ -51,7 +51,7 @@
     "generate_hex": true,
     "libraries": [
         {
-            "branch": "dae905bc9eb05a409bfc503e22ba65297723c099",
+            "branch": "4ee1b74122c91b0780fde5aaa5282d7dd16787fe",
             "name": "codal-core",
             "type": "git",
             "url": "https://github.com/calliope-edu/codal-core"
@@ -72,6 +72,6 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,--gc-sections -Wl,--wrap,atexit -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -Wl,--end-group",
     "post_process": "",
     "processor": "NRF52833",
-    "snapshot_version": "v0.2.68",
+    "snapshot_version": "v0.2.69",
     "toolchain": "ARM_GCC"
 }
