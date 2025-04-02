@@ -894,7 +894,7 @@ void MicroBitBLEManager::pairingMode(MicroBitDisplay &display, Button &authorisa
             {
                 MicroBitImage tick("0,0,0,0,0\n0,0,0,0,255\n0,0,0,255,0\n255,0,255,0,0\n0,255,0,0,0\n");
                 display.print(tick, 0, 0, 0);
-                fiber_sleep(15000);
+                fiber_sleep(2000);
                 timeInPairingMode = MICROBIT_BLE_PAIRING_TIMEOUT * 30;
 
                 /*
