@@ -32,6 +32,8 @@
         "HARDWARE_NEOPIXEL": 1,
         "LED_MATRIX_MAXIMUM_BRIGHTNESS": 245,
         "LED_MATRIX_MINIMUM_BRIGHTNESS": 1,
+        "LEVEL_DETECTOR_SPL_8BIT_000_POINT": 52.0,
+        "LEVEL_DETECTOR_SPL_8BIT_255_POINT": 100.0,
         "MBED_CONF_NORDIC_NRF_LF_CLOCK_SRC": "NRF_LF_SRC_XTAL",
         "MESSAGE_BUS_LISTENER_MAX_QUEUE_DEPTH": 10,
         "NRF52ADC_SOFTWARE_OVERSAMPLING": 1,
@@ -51,19 +53,19 @@
     "generate_hex": true,
     "libraries": [
         {
-            "branch": "4ee1b74122c91b0780fde5aaa5282d7dd16787fe",
+            "branch": "4cc9143f5c56e77c04b5cd53c02e67969598914c",
             "name": "codal-core",
             "type": "git",
             "url": "https://github.com/calliope-edu/codal-core"
         },
         {
-            "branch": "8802eb49140e0389e535cb6160d9080efd951ba7",
+            "branch": "1fbb7240290fe36a55c61378f5cdeb7640f3ec4a",
             "name": "codal-nrf52",
             "type": "git",
             "url": "https://github.com/lancaster-university/codal-nrf52"
         },
         {
-            "branch": "d41d5c7ebe53a1d01935e61d4ffa891e5112e119",
+            "branch": "4b8abc690f6c9fca6132e6db5ee13a795a263f88",
             "name": "codal-microbit-nrf5sdk",
             "type": "git",
             "url": "https://github.com/microbit-foundation/codal-microbit-nrf5sdk"
@@ -72,6 +74,7 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,--gc-sections -Wl,--wrap,atexit -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -Wl,--end-group",
     "post_process": "",
     "processor": "NRF52833",
-    "snapshot_version": "v0.2.69",
+    "show_size": true,
+    "snapshot_version": "v0.3.2",
     "toolchain": "ARM_GCC"
 }

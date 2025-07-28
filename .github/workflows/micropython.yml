@@ -1,9 +1,9 @@
 name: Build MicroPython
 
-# MicroPython has to git clone/checkout this repo commit SHA, so only run this
-# workflow on pushes, as PRs generate a "merge commit" that is not clonable.
 on:
   push:
+    branches: '*'
+  pull_request:
     branches: '*'
 
 jobs:
@@ -17,6 +17,14 @@ jobs:
           repository: 'calliope-edu/micropython-microbit-v2'
           ref: 'v2.1.2-cmini3'
           submodules: 'true'
+          # FIXME: Temporarily check out the audio-recording branch for testing
+          #ref: 'audio-recording'
+      - name: Manually clone microbit-v2-samples in the lib/codal/libraries folder
+        uses: actions/checkout@v4
+        with:
+          path: lib/codal/libraries/codal-microbit-v2
+          fetch-depth: '0'
+          submodules: 'recursive'
       - name: Setup arm-none-eabi-gcc v10.3
         uses: carlosperate/arm-none-eabi-gcc-action@v1
         with:
