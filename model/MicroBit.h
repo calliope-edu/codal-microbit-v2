@@ -315,6 +315,7 @@ namespace codal
 }
 
 void microbit_dmesg_flush();
+uint32_t *microbit_top_of_flash();
 
 #if CONFIG_ENABLED(CODAL_USE_GLOBAL_NAMESPACE)
 using namespace codal;
