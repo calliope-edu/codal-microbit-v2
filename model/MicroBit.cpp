@@ -245,7 +245,7 @@ int MicroBit::init()
     bool triple_reset = 0;
 
 #if CONFIG_ENABLED(MICROBIT_TRIPLE_RESET_TO_PAIR)
-    triple_reset = (microbit_no_init_memory_region.resetClickCount == 3);
+    triple_reset = (microbit_no_init_memory_region.resetClickCount == 3 || microbit_no_init_memory_region.resetClickCount == 8);
 #endif
 
     while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL)
@@ -267,7 +267,11 @@ int MicroBit::init()
             }
             delete RebootMode;
             delete flashIncomplete;
-            microbit_no_init_memory_region.resetClickCount = 0;
+            if(microbit_no_init_memory_region.resetClickCount > 5) {
+                microbit_no_init_memory_region.resetClickCount = 5;
+            } else {
+                microbit_no_init_memory_region.resetClickCount = 0;
+            }
 
             // Start the BLE stack, if it isn't already running.
             bleManager.init( ManagedString( microbit_friendly_name()), getSerial(), messageBus, storage, true);
@@ -281,6 +285,34 @@ int MicroBit::init()
             bleManager.pairingMode(display, buttonA);
         }
     }
+#endif
+
+
+#if CONFIG_ENABLED(MICROBIT_SIX_TAP_RESET_TO_BLANK_MODE)
+
+    // 0* - Default Start
+    // 1 - USER PROGRAM (reset auf 0)
+    // 2 - USER PROGRAM (reset auf 0)
+    // 3 - BLE 1 (reset auf 0)
+    // 4 - USER PROGRAM (reset auf 0)
+    // 5* - USER PROGRAM (reset auf 0)
+    // 6 (1) - BLANK MODE (reset auf 5)
+    // 7 (2) - BLANK MODE (reset auf 5)
+    // 8 (3) - BLE 2 (reset auf 5)
+    // 9 (4) - BLANK MODE (reset auf 5)
+    // 10+ (5+) - BLANK MODE (reset auf 5)
+
+    // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
+    if (microbit_no_init_memory_region.resetClickCount > 5)
+    {
+
+        sleep(500);
+        microbit_no_init_memory_region.resetClickCount = 5;
+
+        while(1)
+            sleep(1000);
+    }
+
 #endif
 
 #if CONFIG_ENABLED(DEVICE_BLE) && CONFIG_ENABLED(MICROBIT_BLE_ENABLED)
