@@ -167,7 +167,7 @@ int MicroBit::init()
     // show microbit_no_init_memory_region.resetClickCount on the 5x5 display as dot position, go to second line if more than 5
     MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
     display.clear();
-    for(int i = 0; i < microbit_no_init_memory_region.resetClickCount; i++)
+    for(int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
     {
         int x = i % 5;
         int y = i / 5;
