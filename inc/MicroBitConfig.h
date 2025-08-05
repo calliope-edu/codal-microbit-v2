@@ -321,6 +321,13 @@
     #define MICROBIT_TRIPLE_RESET_TO_PAIR                 1
 #endif
 
+// Defines default behaviour of six-tap-reset-to-idle feature.
+// 0: Feature disabled
+// 1: Feature enabled. Six taps of reset button will reset the micro:bit to factory mode.
+#ifndef MICROBIT_SIX_TAP_RESET_TO_FACTORY_MODE
+    #define MICROBIT_SIX_TAP_RESET_TO_FACTORY_MODE               1
+#endif
+
 // Defines default behaviour of any stored user data when the micro:bit is reflashed.
 // 0: No action is taken
 // 1: Data is invalidated (any may be hard erased, as per policy of the respective file system used)
