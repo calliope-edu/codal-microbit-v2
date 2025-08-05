@@ -167,8 +167,12 @@ int MicroBit::init()
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
     {
-        if(microbit_no_init_memory_region.resetClickCount > 5 && microbit_no_init_memory_region.resetClickCount < 11) {
+        if(microbit_no_init_memory_region.resetClickCount < 5) {
+            microbit_no_init_memory_region.resetClickCount = 0;
+        } else if(microbit_no_init_memory_region.resetClickCount < 11) {
             microbit_no_init_memory_region.resetClickCount = 5;
+        } else if (microbit_no_init_memory_region.resetClickCount == 11) {
+            microbit_no_init_memory_region.resetClickCount = 0;
         } else {
             KeyValuePair* kv = storage.get(ManagedString("blnk"));
             if (kv && *((uint8_t*)kv->value) == 1) {
