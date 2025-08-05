@@ -164,6 +164,16 @@ int MicroBit::init()
 
     status |= DEVICE_INITIALIZED;
 
+    // show microbit_no_init_memory_region.resetClickCount on the display as dot position
+    display.clear();
+    for(int i = 0; i < microbit_no_init_memory_region.resetClickCount; i++)
+    {
+        display.image.setPixelValue(i, 0, 255);
+    }
+
+    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
+
+
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
     {
@@ -305,17 +315,28 @@ int MicroBit::init()
     // 7 (2) - BLANK MODE (reset auf 5)
     // 8 (3) - BLE 2 (reset auf 5)
     // 9 (4) - BLANK MODE (reset auf 5)
-    // 10+ (5+) - BLANK MODE (reset auf 5)
+    // 10 (5) - BLANK MODE (reset auf 5)
+    // 11+ (6+) - Restore default mode (reset auf 0)
 
     // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
     if (microbit_no_init_memory_region.resetClickCount > 5)
     {
 
         sleep(500);
-        microbit_no_init_memory_region.resetClickCount = 5;
-
-        while(1)
-            sleep(1000);
+        if( microbit_no_init_memory_region.resetClickCount > 11) {
+            // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
+            // This is used to reset the device to blank mode.
+            MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
+            microbit_no_init_memory_region.resetClickCount = 0;
+        } else {
+            // If the reset button has been pressed less than 6 times, we reset the click count.
+            MICROBIT_DEBUG_DMESG( "Entering Blank Mode");
+            microbit_no_init_memory_region.resetClickCount = 5;
+        }
+        
+        // while(1)
+        //     sleep(1000);
+        power.startDeepSleep();
     }
 
 #endif
