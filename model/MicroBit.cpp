@@ -164,23 +164,6 @@ int MicroBit::init()
 
     status |= DEVICE_INITIALIZED;
 
-    // show microbit_no_init_memory_region.resetClickCount on the 5x5 display as dot position, go to second line if more than 5
-    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
-    display.clear();
-    for(int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
-    {
-        int x = i % 5;
-        int y = i / 5;
-        display.image.setPixelValue(x, y, 255);
-    }
-
-    sleep(1000);
-
-    display.clear();
-
-
-
-
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
     {
@@ -196,6 +179,22 @@ int MicroBit::init()
     {
         microbit_no_init_memory_region.resetClickCount++;
     }
+
+
+    // show microbit_no_init_memory_region.resetClickCount on the 5x5 display as dot position, go to second line if more than 5
+    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
+    display.clear();
+    for(int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
+    {
+        int x = i % 5;
+        int y = i / 5;
+        display.image.setPixelValue(x, y, 255);
+    }
+
+    sleep(1000);
+
+    display.clear();
+
 
     // turn RGB LEDs off
     uint8_t rgbBuffer[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
