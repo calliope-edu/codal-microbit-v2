@@ -340,9 +340,10 @@ int MicroBit::init()
             microbit_no_init_memory_region.resetClickCount = 5;
         }
         
-        // while(1)
-        //     sleep(1000);
+
         power.startDeepSleep();
+        while(1)
+            sleep(10000);
     }
 
 #endif
