@@ -170,7 +170,11 @@ int MicroBit::init()
         if(microbit_no_init_memory_region.resetClickCount > 5 && microbit_no_init_memory_region.resetClickCount < 11) {
             microbit_no_init_memory_region.resetClickCount = 5;
         } else {
-            microbit_no_init_memory_region.resetClickCount = 0;
+            if(uBit.storage.get(MSTR("isBlankMode")) == 1) {
+                 microbit_no_init_memory_region.resetClickCount = 5;
+            } else {
+                microbit_no_init_memory_region.resetClickCount = 0;
+            }
         }
         
         target_wait(KL27_POWER_ON_DELAY);
@@ -334,10 +338,12 @@ int MicroBit::init()
             // This is used to reset the device to blank mode.
             MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 0;
+            uBit.storage.put(MSTR("isBlankMode"), 0);
         } else {
             // If the reset button has been pressed less than 6 times, we reset the click count.
             MICROBIT_DEBUG_DMESG( "Entering Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 5;
+            uBit.storage.put(MSTR("isBlankMode"), 1);
         }
         
 
