@@ -164,14 +164,21 @@ int MicroBit::init()
 
     status |= DEVICE_INITIALIZED;
 
-    // show microbit_no_init_memory_region.resetClickCount on the display as dot position
+    // show microbit_no_init_memory_region.resetClickCount on the 5x5 display as dot position, go to second line if more than 5
+    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
     display.clear();
     for(int i = 0; i < microbit_no_init_memory_region.resetClickCount; i++)
     {
-        display.image.setPixelValue(i, 0, 255);
+        int x = i % 5;
+        int y = i / 5;
+        display.image.setPixelValue(x, y, 255);
     }
 
-    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
+    sleep(1000);
+
+    display.clear();
+
+
 
 
     // On a hard reset, wait for the USB interface chip to come online.
