@@ -340,7 +340,7 @@ int MicroBit::init()
 
         sleep(500);
         KeyValuePair* kv = storage.get(ManagedString("blnk"));
-        if( microbit_no_init_memory_region.resetClickCount > 11) {
+        if( microbit_no_init_memory_region.resetClickCount >= 11) {
             MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 0;
             uint8_t val = 0;
