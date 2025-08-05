@@ -335,19 +335,23 @@ int MicroBit::init()
     {
 
         sleep(500);
+        KeyValuePair* kv = storage.get(ManagedString("blnk"));
         if( microbit_no_init_memory_region.resetClickCount > 11) {
-            // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
-            // This is used to reset the device to blank mode.
             MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 0;
             uint8_t val = 0;
-            storage.put(ManagedString("blnk"), &val, 1);
+            if (!kv || kv->value != val) {
+                storage.put(ManagedString("blnk"), &val, 1);
+            }
+            if (kv) delete kv;
         } else {
-            // If the reset button has been pressed less than 6 times, we reset the click count.
             MICROBIT_DEBUG_DMESG( "Entering Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 5;
             uint8_t val = 1;
-            storage.put(ManagedString("blnk"), &val, 1);
+            if (!kv || kv->value != val) {
+                storage.put(ManagedString("blnk"), &val, 1);
+            }
+            if (kv) delete kv;
         }
         
 
