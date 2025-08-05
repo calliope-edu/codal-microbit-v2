@@ -167,11 +167,7 @@ int MicroBit::init()
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
     {
-        if(microbit_no_init_memory_region.resetClickCount > 5) {
-            microbit_no_init_memory_region.resetClickCount = 5;
-        } else {
-            microbit_no_init_memory_region.resetClickCount = 0;
-        }
+        microbit_no_init_memory_region.resetClickCount = 0;
         
         target_wait(KL27_POWER_ON_DELAY);
     }
@@ -467,7 +463,7 @@ void MicroBit::periodicCallback()
     // Zero our reset_count once the micro:bit has been running for half a second
     static int timeout = 500 / (SCHEDULER_TICK_PERIOD_US/1000);
 
-    if (timeout-- == 0 && microbit_no_init_memory_region.resetClickCount != 0)
+    if (timeout-- == 0 && microbit_no_init_memory_region.resetClickCount != 0 && microbit_no_init_memory_region.resetClickCount != 5)
     {
         microbit_no_init_memory_region.resetClickCount = 0;
         status &= ~DEVICE_COMPONENT_STATUS_SYSTEM_TICK;
