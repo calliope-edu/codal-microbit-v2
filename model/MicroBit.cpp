@@ -340,7 +340,7 @@ int MicroBit::init()
             MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 0;
             uint8_t val = 0;
-            if (!kv || kv->value != val) {
+            if (!kv || *((uint8_t*)kv->value) != val) {
                 storage.put(ManagedString("blnk"), &val, 1);
             }
             if (kv) delete kv;
@@ -348,7 +348,7 @@ int MicroBit::init()
             MICROBIT_DEBUG_DMESG( "Entering Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 5;
             uint8_t val = 1;
-            if (!kv || kv->value != val) {
+            if (!kv || *((uint8_t*)kv->value) != val) {
                 storage.put(ManagedString("blnk"), &val, 1);
             }
             if (kv) delete kv;
