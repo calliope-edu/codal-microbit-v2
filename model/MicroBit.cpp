@@ -167,7 +167,7 @@ int MicroBit::init()
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
     {
-        microbit_no_init_memory_region.resetClickCount = 0;
+        microbit_no_init_memory_region.resetClickCount = 1;
         target_wait(KL27_POWER_ON_DELAY);
     }
     else
@@ -245,7 +245,7 @@ int MicroBit::init()
     bool triple_reset = 0;
 
 #if CONFIG_ENABLED(MICROBIT_TRIPLE_RESET_TO_PAIR)
-    triple_reset = (microbit_no_init_memory_region.resetClickCount == 3);
+    triple_reset = (microbit_no_init_memory_region.resetClickCount == 4);
 #endif
 
     while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL)
@@ -267,7 +267,7 @@ int MicroBit::init()
             }
             delete RebootMode;
             delete flashIncomplete;
-            microbit_no_init_memory_region.resetClickCount = 0;
+            microbit_no_init_memory_region.resetClickCount = 1;
 
             // Start the BLE stack, if it isn't already running.
             bleManager.init( ManagedString( microbit_friendly_name()), getSerial(), messageBus, storage, true);
@@ -282,7 +282,27 @@ int MicroBit::init()
         }
     }
 #endif
+if (microbit_no_init_memory_region.resetClickCount > 6
 
+    || microbit_no_init_memory_region.resetClickCount <= 1)
+
+    {
+
+        if(microbit_no_init_memory_region.resetClickCount <= 1) {
+
+            microbit_no_init_memory_region.resetClickCount =  2;
+
+        }
+
+        sleep(500);
+
+        microbit_no_init_memory_region.resetClickCount = 0;
+
+        while(1)
+
+            sleep(1000);
+
+    }
 #if CONFIG_ENABLED(DEVICE_BLE) && CONFIG_ENABLED(MICROBIT_BLE_ENABLED)
     // Start the BLE stack, if it isn't already running.
     bleManager.init( ManagedString( microbit_friendly_name()), getSerial(), messageBus, storage, false);
@@ -430,9 +450,9 @@ void MicroBit::periodicCallback()
     // Zero our reset_count once the micro:bit has been running for half a second
     static int timeout = 500 / (SCHEDULER_TICK_PERIOD_US/1000);
 
-    if (timeout-- == 0 && microbit_no_init_memory_region.resetClickCount != 0)
+    if (timeout-- == 0 && microbit_no_init_memory_region.resetClickCount != 1)
     {
-        microbit_no_init_memory_region.resetClickCount = 0;
+        microbit_no_init_memory_region.resetClickCount = 1;
         status &= ~DEVICE_COMPONENT_STATUS_SYSTEM_TICK;
     }
 }
