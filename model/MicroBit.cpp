@@ -306,21 +306,8 @@ int MicroBit::init()
 
     KeyValuePair* BlnkMode = storage.get("blnk");
 
-    // 0* - Default Start
-    // 1 - USER PROGRAM (reset auf 0)
-    // 2 - USER PROGRAM (reset auf 0)
-    // 3 - BLE 1 (reset auf 0)
-    // 4 - USER PROGRAM (reset auf 0)
-    // 5* - USER PROGRAM (reset auf 0)
-    // 6 (1) - BLANK MODE (reset auf 5)
-    // 7 (2) - BLANK MODE (reset auf 5)
-    // 8 (3) - BLE 2 (reset auf 5)
-    // 9 (4) - BLANK MODE (reset auf 5)
-    // 10 (5) - BLANK MODE (reset auf 5)
-    // 11+ (6+) - Restore default mode (reset auf 0)
-
     // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
-    if (microbit_no_init_memory_region.resetClickCount > 5)
+    if (microbit_no_init_memory_region.resetClickCount == 6)
     {
         sleep(500);
 
