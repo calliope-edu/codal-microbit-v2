@@ -325,6 +325,7 @@ int MicroBit::init()
             display.print("U");
 
         }
+        sleep(100);
     }
 
     if(BlnkMode != NULL)
