@@ -356,12 +356,12 @@ int MicroBit::init()
                 storage.put(ManagedString("blnk"), &val, 1);
             }
             if (kv) delete kv;
+
+            // power.startDeepSleep();
+            while(1)
+                sleep(1000);
         }
         
-
-        power.startDeepSleep();
-        while(1)
-            sleep(10000);
     }
 
 #endif
