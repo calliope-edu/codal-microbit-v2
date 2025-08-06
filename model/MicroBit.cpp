@@ -316,11 +316,14 @@ int MicroBit::init()
             uint8_t blnk = 1;
             storage.put("blnk", &blnk, sizeof(blnk));
             BlnkMode = storage.get("blnk");
+            display.print("B");
         }
         else
         {  
             storage.remove("blnk");
             BlnkMode = NULL;
+            display.print("U");
+
         }
     }
 
@@ -526,6 +529,8 @@ void MicroBit::eraseUserStorage(bool forceErase)
     // Clear our flag if we have been reflashed
     if (reset_value)
         f.write((uint32_t) &reflash_status, &zero, 1);
+
+    storage.remove("blnk");
 
     // Determine if our flash contains a recognised file system. If so, invalidate it.
 #if CONFIG_ENABLED(CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH)
