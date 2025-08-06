@@ -164,6 +164,8 @@ int MicroBit::init()
 
     status |= DEVICE_INITIALIZED;
 
+    KeyValuePair* BlnkMode = storage.get("blnk");
+
     // On a hard reset, wait for the USB interface chip to come online.
     if(NRF_POWER->RESETREAS == 0)
     {
@@ -174,13 +176,11 @@ int MicroBit::init()
         } else if (microbit_no_init_memory_region.resetClickCount == 11) {
             microbit_no_init_memory_region.resetClickCount = 0;
         } else {
-            KeyValuePair* kv = storage.get(ManagedString("blnk"));
-            if (kv && *((uint8_t*)kv->value) == 1) {
+            if (BlnkMode != NULL) {
                 microbit_no_init_memory_region.resetClickCount = 6;
             } else {
                 microbit_no_init_memory_region.resetClickCount = 0;
             }
-            delete kv;
         }
         
         target_wait(KL27_POWER_ON_DELAY);
@@ -190,6 +190,19 @@ int MicroBit::init()
         microbit_no_init_memory_region.resetClickCount++;
     }
 
+
+    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
+        display.clear();
+        for(unsigned int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
+        {
+            int x = i % 5;
+            int y = i / 5;
+            display.image.setPixelValue(x, y, 255);
+        }
+
+        sleep(200);
+
+        display.clear();
 
     // turn RGB LEDs off
     uint8_t rgbBuffer[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -325,38 +338,19 @@ int MicroBit::init()
 
         sleep(500);
 
-        MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
-        display.clear();
-        for(unsigned int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
-        {
-            int x = i % 5;
-            int y = i / 5;
-            display.image.setPixelValue(x, y, 255);
-        }
-
-        sleep(1000);
-
-        display.clear();
-
-
-
-        KeyValuePair* kv = storage.get(ManagedString("blnk"));
         if( microbit_no_init_memory_region.resetClickCount >= 11) {
             MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 0;
-            uint8_t val = 0;
-            if (!kv || *((uint8_t*)kv->value) != val) {
-                storage.put(ManagedString("blnk"), &val, 1);
+            if(BlnkMode != NULL) {
+                storage->remove("blnk");
             }
-            if (kv) delete kv;
         } else {
             MICROBIT_DEBUG_DMESG( "Entering Blank Mode");
             microbit_no_init_memory_region.resetClickCount = 5;
-            uint8_t val = 1;
-            if (!kv || *((uint8_t*)kv->value) != val) {
-                storage.put(ManagedString("blnk"), &val, 1);
+            if(BlnkMode == NULL) {
+                uint8_t blnk = 1;
+                storage->put("blnk", &blnk, sizeof(blnk));
             }
-            if (kv) delete kv;
 
             // animation to indicate blank mode
             for (int pass = 1; pass >= 0; pass--) {
@@ -380,6 +374,8 @@ int MicroBit::init()
     }
 
 #endif
+
+delete BlnkMode;
 
 #if CONFIG_ENABLED(DEVICE_BLE) && CONFIG_ENABLED(MICROBIT_BLE_ENABLED)
     // Start the BLE stack, if it isn't already running.
