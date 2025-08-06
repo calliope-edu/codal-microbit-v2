@@ -176,7 +176,7 @@ int MicroBit::init()
         } else {
             KeyValuePair* kv = storage.get(ManagedString("blnk"));
             if (kv && *((uint8_t*)kv->value) == 1) {
-                microbit_no_init_memory_region.resetClickCount = 5;
+                microbit_no_init_memory_region.resetClickCount = 6;
             } else {
                 microbit_no_init_memory_region.resetClickCount = 0;
             }
