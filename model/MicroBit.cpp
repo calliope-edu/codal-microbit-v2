@@ -327,12 +327,12 @@ int MicroBit::init()
         if(BlnkMode == NULL)
         {
             uint8_t blnk = 1;
-            storage->put("blnk", &blnk, sizeof(blnk));
-            BlnkMode = storage->get("blnk");
+            storage.put("blnk", &blnk, sizeof(blnk));
+            BlnkMode = storage.get("blnk");
         }
         else
         {  
-            storage->remove("blnk");
+            storage.remove("blnk");
         }
     }
 
@@ -350,7 +350,7 @@ int MicroBit::init()
                 sleep(50); // 50ms pause between diagonals
             }
         }
-        
+
         // If we are in blank mode, we just sleep forever.
         while(1)
             sleep(1000);
