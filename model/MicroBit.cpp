@@ -307,7 +307,7 @@ int MicroBit::init()
         
         // Show blank mode indicator on display
         display.clear();
-        display.print("B");  // B for Blank mode
+        display.print("Bl");  // B for Blank mode
         sleep(500);
         display.clear();
     }
@@ -507,6 +507,12 @@ void MicroBit::eraseUserStorage(bool forceErase)
     if (reset_value)
         f.write((uint32_t) &reflash_status, &zero, 1);
 
+    // Clear blank mode setting when reflashed to prevent blocking new user programs
+    if (reset_value || forceErase)
+    {
+        storage.remove(ManagedString("blankMode"));
+    }
+    
     // Determine if our flash contains a recognised file system. If so, invalidate it.
 #if CONFIG_ENABLED(CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH)
     log.invalidate();
