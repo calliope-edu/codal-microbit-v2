@@ -282,7 +282,55 @@ int MicroBit::init()
         }
     }
 #endif
-
+    // Check if we need to toggle blank mode after multiple resets
+    if (microbit_no_init_memory_region.resetClickCount > 5)
+    {
+        // Toggle blank mode flag (persistent on/off switch)
+        KeyValuePair* currentBlankMode = storage.get(ManagedString("blankMode"));
+        uint8_t newBlankModeFlag = 0;
+        
+        if (currentBlankMode && *((uint8_t*)currentBlankMode->value) == 1) 
+        {
+            // Currently in blank mode, turn it off
+            newBlankModeFlag = 0;
+        }
+        else
+        {
+            // Not in blank mode, turn it on
+            newBlankModeFlag = 1;
+        }
+        
+        storage.put(ManagedString("blankMode"), &newBlankModeFlag, sizeof(newBlankModeFlag));
+        
+        if (currentBlankMode) // Delete the current blank mode key-value pair to prevent memory leak
+            delete currentBlankMode;
+        
+        // Show blank mode indicator on display
+        display.clear();
+        display.print("B");  // B for Blank mode
+        sleep(500);
+        display.clear();
+    }
+    
+    // Check if we're in blank mode
+    KeyValuePair* blankMode = storage.get(ManagedString("blankMode"));
+    if (blankMode && *((uint8_t*)blankMode->value) == 1)
+    {
+        delete blankMode; // Delete the blank mode key-value pair to prevent memory leak
+        
+        // Stay in this loop - user program is blocked
+        // Use reset 6+ times to toggle blank mode off
+        while(1)
+        {
+            sleep(1000);  // delay to prevent busy waiting
+        }
+    }
+    else if (blankMode)
+    {
+        // Clean up if blank mode is off
+        delete blankMode;
+    }
+    
 #if CONFIG_ENABLED(DEVICE_BLE) && CONFIG_ENABLED(MICROBIT_BLE_ENABLED)
     // Start the BLE stack, if it isn't already running.
     bleManager.init( ManagedString( microbit_friendly_name()), getSerial(), messageBus, storage, false);
