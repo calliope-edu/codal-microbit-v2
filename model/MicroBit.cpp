@@ -191,21 +191,6 @@ int MicroBit::init()
     }
 
 
-    // show microbit_no_init_memory_region.resetClickCount on the 5x5 display as dot position, go to second line if more than 5
-    MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
-    display.clear();
-    for(unsigned int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
-    {
-        int x = i % 5;
-        int y = i / 5;
-        display.image.setPixelValue(x, y, 255);
-    }
-
-    sleep(1000);
-
-    display.clear();
-
-
     // turn RGB LEDs off
     uint8_t rgbBuffer[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     neopixel_send_buffer(io.RGB, rgbBuffer, sizeof(rgbBuffer));
@@ -339,6 +324,22 @@ int MicroBit::init()
     {
 
         sleep(500);
+
+        MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
+        display.clear();
+        for(unsigned int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
+        {
+            int x = i % 5;
+            int y = i / 5;
+            display.image.setPixelValue(x, y, 255);
+        }
+
+        sleep(1000);
+
+        display.clear();
+
+
+
         KeyValuePair* kv = storage.get(ManagedString("blnk"));
         if( microbit_no_init_memory_region.resetClickCount >= 11) {
             MICROBIT_DEBUG_DMESG( "Leaving Blank Mode");
@@ -356,6 +357,20 @@ int MicroBit::init()
                 storage.put(ManagedString("blnk"), &val, 1);
             }
             if (kv) delete kv;
+
+            // animation to indicate blank mode
+            for (int pass = 1; pass >= 0; pass--) {
+                for (int d = 0; d <= 8; d++) {
+                    for (int y = 0; y <= d; y++) {
+                        int x = d - y;
+                        if (x < 5 && y < 5) {
+                            display.image.setPixelValue(x, y, 255 * pass);
+                        }
+                    }
+                    sleep(50); // 50ms pause between diagonals
+                }
+            }
+            // display.clear();
 
             // power.startDeepSleep();
             while(1)
