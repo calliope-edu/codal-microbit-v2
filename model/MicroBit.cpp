@@ -333,6 +333,7 @@ int MicroBit::init()
         else
         {  
             storage.remove("blnk");
+            BlnkMode = NULL;
         }
     }
 
