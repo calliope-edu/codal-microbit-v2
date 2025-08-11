@@ -252,7 +252,6 @@ int MicroBit::init()
     // If the reset button has been pressed at least 6 times, we toggle blank mode
     if (microbit_no_init_memory_region.resetClickCount >= 6)
     {
-        sleep(500);
         microbit_no_init_memory_region.resetClickCount = 0;
 
         if(BlnkMode == NULL)
@@ -266,7 +265,6 @@ int MicroBit::init()
             storage.remove("blnk");
             BlnkMode = NULL;
         }
-        
     }
 
     while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL || BlnkMode != NULL)
