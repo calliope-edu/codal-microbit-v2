@@ -175,6 +175,19 @@ int MicroBit::init()
         microbit_no_init_memory_region.resetClickCount++;
     }
 
+    // MICROBIT_DEBUG_DMESG( "Reset Click Count: %d", microbit_no_init_memory_region.resetClickCount);
+    //     display.clear();
+    //     for(unsigned int i = 0; i < microbit_no_init_memory_region.resetClickCount && i < 24; i++)
+    //     {
+    //         int x = i % 5;
+    //         int y = i / 5;
+    //         display.image.setPixelValue(x, y, 255);
+    //     }
+
+    //     sleep(200);
+
+    //     display.clear();
+
     // turn RGB LEDs off
     uint8_t rgbBuffer[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     neopixel_send_buffer(io.RGB, rgbBuffer, sizeof(rgbBuffer));
@@ -282,6 +295,63 @@ int MicroBit::init()
         }
     }
 #endif
+
+
+#if CONFIG_ENABLED(MICROBIT_SIX_TAP_RESET_TO_BLANK_MODE)
+
+    KeyValuePair* BlnkMode = storage.get("blnk");
+
+    // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
+    if (microbit_no_init_memory_region.resetClickCount >= 6)
+    {
+        sleep(500);
+        microbit_no_init_memory_region.resetClickCount = 0;
+
+        if(BlnkMode == NULL)
+        {
+            uint8_t blnk = 1;
+            storage.put("blnk", &blnk, sizeof(blnk));
+            BlnkMode = storage.get("blnk");
+
+            // animation to indicate blank mode
+            for (int pass = 1; pass >= 0; pass--) {
+                for (int d = 0; d <= 8; d++) {
+                    for (int y = 0; y <= d; y++) {
+                        int x = d - y;
+                        if (x < 5 && y < 5) {
+                            display.image.setPixelValue(x, y, 255 * pass);
+                        }
+                    }
+                    sleep(50); // 50ms pause between diagonals
+                }
+            } 
+
+        }
+        else
+        {  
+            storage.remove("blnk");
+            BlnkMode = NULL;
+        }
+        
+    }
+
+    if(BlnkMode != NULL)
+    {
+        // show smiley on display
+        display.image.clear();
+        MicroBitImage smiley("0,255,0,255, 0\n0,255,0,255,0\n0,0,0,0,0\n255,0,0,0,255\n0,255,255,255,0\n");
+        display.print(smiley);     
+
+        // If we are in blank mode, we just sleep forever.
+        while(1)
+            sleep(1000);
+
+    }
+
+    delete BlnkMode;
+
+#endif
+
 
 #if CONFIG_ENABLED(DEVICE_BLE) && CONFIG_ENABLED(MICROBIT_BLE_ENABLED)
     // Start the BLE stack, if it isn't already running.
@@ -458,6 +528,10 @@ void MicroBit::eraseUserStorage(bool forceErase)
     // Clear our flag if we have been reflashed
     if (reset_value)
         f.write((uint32_t) &reflash_status, &zero, 1);
+
+#if CONFIG_ENABLED(MICROBIT_SIX_TAP_RESET_TO_BLANK_MODE)
+    storage.remove("blnk");
+#endif
 
     // Determine if our flash contains a recognised file system. If so, invalidate it.
 #if CONFIG_ENABLED(CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH)
