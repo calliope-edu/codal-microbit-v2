@@ -304,6 +304,20 @@ int MicroBit::init()
     // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
     if (microbit_no_init_memory_region.resetClickCount >= 6)
     {
+
+        // animation to indicate blank mode
+        for (int pass = 1; pass >= 0; pass--) {
+            for (int d = 0; d <= 8; d++) {
+                for (int y = 0; y <= d; y++) {
+                    int x = d - y;
+                    if (x < 5 && y < 5) {
+                        display.image.setPixelValue(x, y, 255 * pass);
+                    }
+                }
+                sleep(50); // 50ms pause between diagonals
+            }
+        }
+
         microbit_no_init_memory_region.resetClickCount = 0;
 
         if(BlnkMode == NULL)
@@ -311,20 +325,6 @@ int MicroBit::init()
             uint8_t blnk = 1;
             storage.put("blnk", &blnk, sizeof(blnk));
             BlnkMode = storage.get("blnk");
-
-            // animation to indicate blank mode
-            for (int pass = 1; pass >= 0; pass--) {
-                for (int d = 0; d <= 8; d++) {
-                    for (int y = 0; y <= d; y++) {
-                        int x = d - y;
-                        if (x < 5 && y < 5) {
-                            display.image.setPixelValue(x, y, 255 * pass);
-                        }
-                    }
-                    sleep(50); // 50ms pause between diagonals
-                }
-            } 
-
         }
         else
         {  
