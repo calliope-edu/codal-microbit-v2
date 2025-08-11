@@ -304,7 +304,6 @@ int MicroBit::init()
     // If the reset button has been pressed 6 times, we enter set the device in a infinite loop with sleep.
     if (microbit_no_init_memory_region.resetClickCount >= 6)
     {
-        sleep(500);
         microbit_no_init_memory_region.resetClickCount = 0;
 
         if(BlnkMode == NULL)
