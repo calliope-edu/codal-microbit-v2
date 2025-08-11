@@ -530,7 +530,12 @@ void MicroBit::eraseUserStorage(bool forceErase)
         f.write((uint32_t) &reflash_status, &zero, 1);
 
 #if CONFIG_ENABLED(MICROBIT_SIX_TAP_RESET_TO_BLANK_MODE)
-    storage.remove("blnk");
+    KeyValuePair* BlnkMode = storage.get("blnk");
+    if( BlnkMode != NULL )
+    {
+        storage.remove("blnk");
+    }
+    delete BlnkMode;
 #endif
 
     // Determine if our flash contains a recognised file system. If so, invalidate it.
