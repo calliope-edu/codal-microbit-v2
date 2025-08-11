@@ -239,6 +239,7 @@ int MicroBit::init()
     // If a RebootMode Key has been set boot straight into BLE mode
     KeyValuePair* RebootMode = storage.get("RebootMode");
     KeyValuePair* flashIncomplete = storage.get("flashIncomplete");
+    KeyValuePair* BlnkMode = storage.get("blnk");
     sleep(100);
     // Animation
     uint8_t x = 0; uint8_t y = 0;
@@ -248,7 +249,27 @@ int MicroBit::init()
     triple_reset = (microbit_no_init_memory_region.resetClickCount == 3);
 #endif
 
-    while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL)
+    // If the reset button has been pressed at least 6 times, we toggle blank mode
+    if (microbit_no_init_memory_region.resetClickCount >= 6)
+    {
+        sleep(500);
+        microbit_no_init_memory_region.resetClickCount = 0;
+
+        if(BlnkMode == NULL)
+        {
+            uint8_t blnk = 1;
+            storage.put("blnk", &blnk, sizeof(blnk));
+            BlnkMode = storage.get("blnk");
+        }
+        else
+        {  
+            storage.remove("blnk");
+            BlnkMode = NULL;
+        }
+        
+    }
+
+    while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL || BlnkMode != NULL)
     {
         display.image.setPixelValue(x,y,255);
         sleep(triple_reset ? 10 : 20);
@@ -267,6 +288,7 @@ int MicroBit::init()
             }
             delete RebootMode;
             delete flashIncomplete;
+            delete BlnkMode;
             microbit_no_init_memory_region.resetClickCount = 0;
 
             // Start the BLE stack, if it isn't already running.
@@ -458,6 +480,13 @@ void MicroBit::eraseUserStorage(bool forceErase)
     // Clear our flag if we have been reflashed
     if (reset_value)
         f.write((uint32_t) &reflash_status, &zero, 1);
+
+    KeyValuePair* BlnkMode = storage.get("blnk");
+    if( BlnkMode != NULL )
+    {
+        storage.remove("blnk");
+    }
+    delete BlnkMode;
 
     // Determine if our flash contains a recognised file system. If so, invalidate it.
 #if CONFIG_ENABLED(CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH)
