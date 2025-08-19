@@ -250,6 +250,7 @@ int MicroBit::init()
 #endif
 
     // If the reset button has been pressed at least 6 times, we toggle blank mode
+#if CONFIG_ENABLED(MICROBIT_BLNK_MODE_ENABLED)
     if (microbit_no_init_memory_region.resetClickCount >= 6)
     {
         microbit_no_init_memory_region.resetClickCount = 0;
@@ -281,7 +282,7 @@ int MicroBit::init()
           y++; x = 0;
         }
 
-        if (i == 25 || RebootMode != NULL)
+        if (i == 25 || RebootMode != NULL || BlnkMode != NULL)
         {
             // Remove KV if it exists
             if(RebootMode != NULL){
