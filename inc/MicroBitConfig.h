@@ -321,6 +321,12 @@
     #define MICROBIT_TRIPLE_RESET_TO_PAIR                 1
 #endif
 
+
+// Defines if Blank mode is enabled
+#ifndef MICROBIT_BLNK_MODE_ENABLED
+    #define MICROBIT_BLNK_MODE_ENABLED                    1
+#endif
+
 // Defines default behaviour of any stored user data when the micro:bit is reflashed.
 // 0: No action is taken
 // 1: Data is invalidated (any may be hard erased, as per policy of the respective file system used)

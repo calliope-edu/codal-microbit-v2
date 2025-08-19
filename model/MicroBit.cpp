@@ -266,6 +266,9 @@ int MicroBit::init()
             BlnkMode = NULL;
         }
     }
+#else
+    BlnkMode = NULL;
+#endif
 
     while (((triple_reset || (buttonA.isPressed() && buttonB.isPressed())) && i<25) || RebootMode != NULL || flashIncomplete != NULL || BlnkMode != NULL)
     {
