@@ -363,9 +363,6 @@ const uint16_t MICROBIT_ID_MBED_TICKER       __attribute__ ((deprecated)) = 83;
 #define MICROBIT_ID_IO_M_B_IN2                                  ID_PIN_M_B_IN2
 #define MICROBIT_ID_IO_M_MODE                                   ID_PIN_M_MODE
 
-// For MakeCode extension compat. Delete ASAP.
-#define MICROBIT_ID_FACE                                        ID_PIN_FACE
-
 #define MICROBIT_ID_MESSAGE_BUS_LISTENER                        DEVICE_ID_MESSAGE_BUS_LISTENER
 #define MICROBIT_ID_MULTIBUTTON_ATTACH                          DEVICE_ID_MULTIBUTTON_ATTACH
 #define MICROBIT_ID_NOTIFY                                      DEVICE_ID_NOTIFY

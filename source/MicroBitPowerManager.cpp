@@ -314,11 +314,11 @@ ManagedBuffer MicroBitPowerManager::readProperty(int property)
 void MicroBitPowerManager::off()
 {
     setPowerLED( true /*doSleep*/);
-   
+
     // Calliope: turn RGB LEDs off
     uint8_t rgbBuffer[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     neopixel_send_buffer(io.RGB, rgbBuffer, sizeof(rgbBuffer));
-    
+
     // Update peripheral drivers
     CodalComponent::deepSleepAll( deepSleepCallbackBegin, NULL);
 

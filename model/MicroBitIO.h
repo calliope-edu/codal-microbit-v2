@@ -360,13 +360,6 @@ typedef enum {
 #define ID_PIN_M_B_IN1    (DEVICE_ID_IO_P0 + 54) // Motor B IN1
 #define ID_PIN_M_B_IN2    (DEVICE_ID_IO_P0 + 55) // Motor B IN2
 #define ID_PIN_M_MODE    (DEVICE_ID_IO_P0 + 56) // Motor Mode
-//#define ID_PIN_PAD3      (DEVICE_ID_IO_P0 + 57) // PAD3
-//#define ID_PIN_GA0       (DEVICE_ID_IO_P0 + 58) // Grove Analog
-
-
-
-// For MakeCode extension compat. Delete ASAP.
-#define ID_PIN_FACE      (ID_PIN_LOGO)
 
 //
 // Saved status values to restore GPIO configurations after deep sleep

@@ -438,7 +438,6 @@ void MicroBitBLEManager::init( ManagedString deviceName, ManagedString serialNum
     MICROBIT_DEBUG_DMESG( "DEVICE_INFORMATION_SERVICE");
 
     ManagedString disName(MICROBIT_BLE_MODEL + ManagedString(" V2"));
-
     ble_dis_init_t disi;
     memset( &disi, 0, sizeof(disi));
     disi.dis_char_rd_sec = SEC_OPEN;
