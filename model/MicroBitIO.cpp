@@ -108,8 +108,7 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     col5(P10),
     buttonA(P5),
     buttonB(P11),
-    P16(A1RX),
-    P17(A1TX),
+    P16(A1TX),
     P19(A0SCL),
     P20(A0SDA)
 {
