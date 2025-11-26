@@ -8,6 +8,10 @@ The current tag uses the following library versions:
  - codal-nrf52 = https://github.com/lancaster-university/codal-nrf52/tree/8802eb49140e0389e535cb6160d9080efd951ba7
  - codal-microbit-nrf5sdk = https://github.com/microbit-foundation/codal-microbit-nrf5sdk/tree/d41d5c7ebe53a1d01935e61d4ffa891e5112e119
 
+## [v0.3.2_ble_fix2](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.3.2_ble_fix1...v0.3.2_ble_fix2)
+
+ - Fix critical region handling in SoundOutputPin updateOutputBuffer (by Juri Wolf)
+
 ## [v0.3.2_ble_fix1](https://github.com/calliope-edu/codal-microbit-v2/compare/v0.2.69...v0.3.2_ble_fix1)
 
  - adds 7 pins in 3 files, started from gittag v0.2.50 (by hugo)
