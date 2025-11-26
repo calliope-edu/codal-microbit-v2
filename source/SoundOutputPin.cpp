@@ -190,7 +190,7 @@ void SoundOutputPin::update()
   */
 void SoundOutputPin::updateOutputBuffer(bool all)
 {
-    // sd_nvic_critical_region_enter( &nested);
+    sd_nvic_critical_region_enter( &nested);
     // target_disable_irq();
 
     uint8_t *bufferEnd = outputBuffer.getBytes() + outputBuffer.length();
@@ -233,7 +233,7 @@ void SoundOutputPin::updateOutputBuffer(bool all)
     _periodUs = periodUs;
     _value = value;
 
-    // sd_nvic_critical_region_exit( &nested);
+    sd_nvic_critical_region_exit( &nested);
     // target_enable_irq();
 }
 
