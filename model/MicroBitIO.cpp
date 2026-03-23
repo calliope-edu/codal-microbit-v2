@@ -63,10 +63,7 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     P14(ID_PIN_P14, P0_01, PIN_CAPABILITY_AD),
     P15(ID_PIN_P15, P0_13, PIN_CAPABILITY_AD),
     /// P16(ID_PIN_P16, P1_02, PIN_CAPABILITY_AD),
-    P16(ID_PIN_P16, P0_29, PIN_CAPABILITY_AD), ////new Calliope analog pin (C16)
-
-//Micro:bit P3
-    /// P17(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), //[Calliope] P17
+    P16(ID_PIN_P16, P0_29, PIN_CAPABILITY_AD), //new Calliope analog pin (C16)
     P17(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), //Micro:bit P16
     P18(ID_PIN_P18, P0_31, PIN_CAPABILITY_AD), //Micro:bit P3
     /// P19(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),

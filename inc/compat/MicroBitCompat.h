@@ -335,7 +335,7 @@ const uint16_t MICROBIT_ID_MBED_TICKER       __attribute__ ((deprecated)) = 83;
 #define MICROBIT_ID_IO_P0                                       ID_PIN_P0
 #define MICROBIT_ID_IO_P1                                       ID_PIN_P1
 #define MICROBIT_ID_IO_P2                                       ID_PIN_P2
-#define MICROBIT_ID_IO_P3                                       ID_PIN_P3
+#define MICROBIT_ID_IO_P3                                       ID_PIN_P3 //new Calliope touch pin (P3)
 #define MICROBIT_ID_IO_P4                                       ID_PIN_P4
 #define MICROBIT_ID_IO_P5                                       ID_PIN_P5
 #define MICROBIT_ID_IO_P6                                       ID_PIN_P6
@@ -348,11 +348,11 @@ const uint16_t MICROBIT_ID_MBED_TICKER       __attribute__ ((deprecated)) = 83;
 #define MICROBIT_ID_IO_P13                                      ID_PIN_P13
 #define MICROBIT_ID_IO_P14                                      ID_PIN_P14
 #define MICROBIT_ID_IO_P15                                      ID_PIN_P15
-#define MICROBIT_ID_IO_A1_RX                                    ID_PIN_P16 //#define MICROBIT_ID_IO_P16
-#define MICROBIT_ID_IO_A1_TX                                    ID_PIN_P17 //#define MICROBIT_ID_IO_P17
-#define MICROBIT_ID_IO_P18                                      ID_PIN_P18
-#define MICROBIT_ID_IO_A0_SCL                                   ID_PIN_P19
-#define MICROBIT_ID_IO_A0_SDA                                   ID_PIN_P20 //#define MICROBIT_ID_IO_P20 
+#define MICROBIT_ID_IO_P16                                      ID_PIN_P16 //new Calliope analog pin (C16)
+#define MICROBIT_ID_IO_P17                                      ID_PIN_P17 //Micro:bit P16
+#define MICROBIT_ID_IO_P18                                      ID_PIN_P18 //Micro:bit P3
+#define MICROBIT_ID_IO_P19                                      ID_PIN_P19
+#define MICROBIT_ID_IO_P20                                      ID_PIN_P20 
 #define MICROBIT_ID_LOGO                                        ID_PIN_LOGO
 
 // Calliope mini3
