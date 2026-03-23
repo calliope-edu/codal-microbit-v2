@@ -304,10 +304,7 @@ void MicroBitCompassCalibrator::calibrateUX(MicroBitEvent)
 
     const int PIXEL1_THRESHOLD = 200;
     const int PIXEL2_THRESHOLD = 680;
-    const int REDISPLAY_MSG_TIMEOUT_MS = 30000;
-    const int SAMPLES_END_MSG_COUNT = 15;
-    const int TIME_STEP = 100;
-    const int MSG_TIME = 155 * TIME_STEP; //We require MSG_TIME % TIME_STEP == 0
+    const int TIME_STEP = 80;
 
     target_wait(100);
 
@@ -319,10 +316,7 @@ void MicroBitCompassCalibrator::calibrateUX(MicroBitEvent)
 
     Sample3D data[PERIMETER_POINTS];
     uint8_t visited[PERIMETER_POINTS] = { 0 };
-    uint8_t cursor_on = 0;
     uint8_t samples = 0;
-    uint8_t samples_this_period = 0;
-    int16_t remaining_scroll_time = MSG_TIME; // 32s maximum in uint16_t
 
     // Set the display to full brightness (in case a user program has it very dim / off). Store the current brightness, so we can restore it later.
     int displayBrightness = display.getBrightness();
@@ -333,81 +327,67 @@ void MicroBitCompassCalibrator::calibrateUX(MicroBitEvent)
 
     while(samples < PERIMETER_POINTS)
     {
-        // Scroll a message the first time we enter this loop and every REDISPLAY_MSG_TIMEOUT_MS
-        if (remaining_scroll_time == MSG_TIME || remaining_scroll_time <= -REDISPLAY_MSG_TIMEOUT_MS)        {
-                display.clear();
-                display.scrollAsync("TILT TO FILL SCREEN "); // Takes about 14s
-
-                remaining_scroll_time = MSG_TIME;
-                samples_this_period = 0;
-        }
-        else if (remaining_scroll_time == 0 || samples_this_period == SAMPLES_END_MSG_COUNT)
-        {
-                // This stops the scrolling at the end of the message.
-                // ...and it is the source of the ((MSG_TIME % TIME_STEP) == 0) requirement
-                display.stopAnimation();
-        }
-
-        // update our model of the flash status of the user controlled pixel.
-        cursor_on = (cursor_on + 40) % 200;
-
-        // take a snapshot of the current accelerometer data.
-        int x = accelerometer.getX();
-        int y = accelerometer.getY();
-
-        // Deterine the position of the user controlled pixel on the screen.
-        if (x < -PIXEL2_THRESHOLD)
-            cursor.x = 0;
-        else if (x < -PIXEL1_THRESHOLD)
-            cursor.x = 1;
-        else if (x > PIXEL2_THRESHOLD)
-            cursor.x = 4;
-        else if (x > PIXEL1_THRESHOLD)
-            cursor.x = 3;
-        else
-            cursor.x = 2;
-
-        if (y < -PIXEL2_THRESHOLD)
-            cursor.y = 0;
-        else if (y < -PIXEL1_THRESHOLD)
-            cursor.y = 1;
-        else if (y > PIXEL2_THRESHOLD)
-            cursor.y = 4;
-        else if (y > PIXEL1_THRESHOLD)
-            cursor.y = 3;
-        else
-            cursor.y = 2;
+        // Define the animation path around the edge of the screen.
+        static const Point animationPath[] = {
+            {0, 0}, {1, 0}, {2, 0}, {3, 0}, {4, 0},
+            {4, 1}, {4, 2}, {4, 3}, {4, 4},
+            {3, 4}, {2, 4}, {1, 4}, {0, 4},
+            {0, 3}, {0, 2}, {0, 1}
+        };
+        static const int animationPathLength = sizeof(animationPath) / sizeof(animationPath[0]);
+        static int animationIndex = 0;
 
         img.clear();
 
         // Turn on any pixels that have been visited.
-        for (int i=0; i<PERIMETER_POINTS; i++)
-            if (visited[i] == 1)
-                img.setPixelValue(perimeter[i].x, perimeter[i].y, 255);
-
-        // Update the pixel at the users position.
-        img.setPixelValue(cursor.x, cursor.y, cursor_on);
-
-        // Update the buffer to the screen ONLY if we've finished scrolling the message
-        if (remaining_scroll_time < 0 || samples_this_period > SAMPLES_END_MSG_COUNT)
-            display.image.paste(img,0,0,0);
-
-        // test if we need to update the state at the users position.
-        for (int i=0; i<PERIMETER_POINTS; i++)
+        for (int i = 0; i < PERIMETER_POINTS; i++)
         {
-            if (cursor.x == perimeter[i].x && cursor.y == perimeter[i].y && !(visited[i] == 1))
+            if (visited[i])
+                img.setPixelValue(perimeter[i].x, perimeter[i].y, 80); // Full brightness for visited pixels.
+        }
+
+        // Turn on the animation pixel with reduced brightness.
+        const Point& animPoint = animationPath[animationIndex];
+        img.setPixelValue(animPoint.x, animPoint.y, 15); // Reduced brightness (e.g., 20 out of 255).
+        animationIndex = (animationIndex + 1) % animationPathLength;
+
+        // Update the pixel at the user's position.
+        img.setPixelValue(cursor.x, cursor.y, 255); // reduced brightness (e.g., 1 out of 255).
+
+        // Update the buffer to the screen.
+        display.image.paste(img, 0, 0, 0);
+
+        // Take a snapshot of the current accelerometer data.
+        int x = accelerometer.getX();
+        int y = accelerometer.getY();
+
+        // Determine the position of the user-controlled pixel on the screen.
+        cursor.x = (x < -PIXEL2_THRESHOLD) ? 0 :
+                   (x < -PIXEL1_THRESHOLD) ? 1 :
+                   (x > PIXEL2_THRESHOLD) ? 4 :
+                   (x > PIXEL1_THRESHOLD) ? 3 : 2;
+
+        cursor.y = (y < -PIXEL2_THRESHOLD) ? 0 :
+                   (y < -PIXEL1_THRESHOLD) ? 1 :
+                   (y > PIXEL2_THRESHOLD) ? 4 :
+                   (y > PIXEL1_THRESHOLD) ? 3 : 2;
+
+        // Test if we need to update the state at the user's position.
+        for (int i = 0; i < PERIMETER_POINTS; i++)
+        {
+            if (cursor.x == perimeter[i].x && cursor.y == perimeter[i].y && !visited[i])
             {
-                // Record the sample data for later processing...
+                // Record the sample data for later processing.
                 data[samples] = compass.getSample(RAW);
 
-                // Record that this pixel has been visited.
+                // Mark this pixel as visited.
                 visited[i] = 1;
                 samples++;
-                samples_this_period++;
+                break; // No need to check further once a match is found.
             }
         }
+
         target_wait(TIME_STEP);
-        remaining_scroll_time-=TIME_STEP;
     }
 
     CompassCalibration cal = calibrate(data, samples); 

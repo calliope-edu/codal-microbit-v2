@@ -3,10 +3,10 @@
  * This content is managed in https://github.com/lancaster-university/codal-microbit-v2/
  */
 body {
-  font-family: "Helvetica Now", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "Helvetica Now", Helvetica, Arial, sans-serif;
 }
 a {
-  color: rgba(108, 75, 193, 1);
+  color: rgba(66, 201, 201, 1);
 }
 button {
   display: block;
@@ -19,14 +19,14 @@ button {
   padding: 0 16px;
 
   /* Secondary buttons */
-  color: #000;
-  border: 2px solid #000;
+  color: rgba(66, 201, 201, 1);
+  border: 2px solid rgba(66, 201, 201, 1);
   background: #fff;
 }
 /* Primary button */
 button:first-of-type {
   border: none;
-  background: #000;
+  background: rgba(66, 201, 201, 1);
   color: #fff;
 }
 tr:nth-child(even) {
@@ -68,7 +68,7 @@ header {
 }
 .header-contents {
   height: 62px;
-  background-color: #262626;
+  background-color: #f3f3f3;
 }
 .header-contents svg {
   width: 167px;

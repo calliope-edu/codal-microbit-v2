@@ -4,6 +4,7 @@
  - CI: Updates due to latest arm compiler not supporting Intel Mac. (by Carlos Pereira Atencio)
  - Snapshot v0.3.4 (by Carlos Pereira Atencio)
 
+<<<<<<< HEAD
 ## [v0.3.3](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.3.2...v0.3.3)
 
  - Add additional validation checks around SoundEmjiSynthesizer, and guarantee mutual exclusion when IRQ triggers (by Joe Finney)
@@ -23,6 +24,12 @@
 
  - Prevent microphone LED from being onn all the time (bug #499) (by Joe Finney)
  - Smooth values in the 35..56dB range (by Joe Finney)
+=======
+The current tag uses the following library versions:
+ - codal-core = https://github.com/lancaster-university/codal-core/tree/a2f5051dc60f89276546517f1077e75659ae6741
+ - codal-nrf52 = https://github.com/lancaster-university/codal-nrf52/tree/1fbb7240290fe36a55c61378f5cdeb7640f3ec4a
+ - codal-microbit-nrf5sdk = https://github.com/microbit-foundation/codal-microbit-nrf5sdk/tree/4b8abc690f6c9fca6132e6db5ee13a795a263f88
+>>>>>>> v0.3.2-calliope-3
 
 ## [v0.3.1](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.3.0...v0.3.1)
 
@@ -61,9 +68,14 @@
  - Update target-locked to latest revision (by Joe Finney)
  - Filter audio data that can arrive when hardware is disabled (#478) (by Joe Finney)
  - bump version (by Joe Finney)
+<<<<<<< HEAD
  - Snapshot v0.3.0 (by Carlos Pereira Atencio)
 
 ### codal-core ([238e938...24f1284](https://github.com/lancaster-university/codal-core/compare/238e93846b434b730d4d0bfde99b43ccfde29cef...24f1284018657fd01a276ef554d16f9550d65d7f))
+=======
+
+### codal-core ([238e938...e659bf3](https://github.com/lancaster-university/codal-core/compare/238e93846b434b730d4d0bfde99b43ccfde29cef...e659bf3a19716453dc75a0090ad00f89bb2bcb16))
+>>>>>>> v0.3.2-calliope-3
 
  - Remove runtime configuration of bitrate for StreamSplitter (by Joe Finney)
  - Remove legacy code. (by Joe Finney)
@@ -87,10 +99,15 @@
  - Add optional support to filter unwanted packets at source (by Joe Finney)
  - Create tailored dataWanted() behaviour for SerialStremaer (#485) (by Joe Finney)
 
+<<<<<<< HEAD
 ### codal-nrf52 ([8802eb4...1fbb724](https://github.com/lancaster-university/codal-nrf52/compare/8802eb49140e0389e535cb6160d9080efd951ba7...1fbb7240290fe36a55c61378f5cdeb7640f3ec4a))
 
  - Updated documentation for NRF52I2C and NRF52Pin (both .h & .cpp) (#55) (by KierPalin)
  - Eliminate compiler warning about derived method signature (#57) (by Kevin Walsh)
+=======
+### codal-nrf52 ([8802eb4...0337010](https://github.com/lancaster-university/codal-nrf52/compare/8802eb49140e0389e535cb6160d9080efd951ba7...03370108dec7310eed9a2cf0b072d869bec3b353))
+
+>>>>>>> v0.3.2-calliope-3
  - Minor change to support debugging (by Joe Finney)
  - Changes to support audio-refactor. (by Joe Finney)
  - Bugfix minor errors (by Joe Finney)
@@ -106,12 +123,22 @@
 
 ## [v0.2.71](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.70...v0.2.71)
 
+<<<<<<< HEAD
  - Fix first use of io.logo.isTouched() (#480) (by Martin Williams)
  - Save a bit of memory from MicroBitIO. (#466) (by Carlos Pereira Atencio)
  - Snapshot v0.2.71 (by Carlos Pereira Atencio)
 
 ## [v0.2.70](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.69...v0.2.70)
 
+=======
+ - Updated the Changelog (v0.2.70) (by Github Actions)
+ - Fix first use of io.logo.isTouched() (#480) (by Martin Williams)
+ - Save a bit of memory from MicroBitIO. (#466) (by Carlos Pereira Atencio)
+
+## [v0.2.70](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.69...v0.2.70)
+
+ - Updated the Changelog (v0.2.69) (by Github Actions)
+>>>>>>> v0.3.2-calliope-3
  - CI: Update mac runner version to macOS 13, as 12 is deprecated. (by Carlos Pereira Atencio)
  - Fix Pi value typo in SoundSynthesizerEffects. (#456) (by Carlos Pereira Atencio)
  - CI: Reduce the min GCC version used to match what MakeCode (PXT) uses. (#461) (by Carlos Pereira Atencio)
@@ -134,8 +161,17 @@
  - Fix Compass::init() warning and array delete bug (#181) (by Kevin Walsh)
  - LevelDetectorSPL: Cast `LEVEL_DETECTOR_SPL_8BIT_X_POINT` to floats. (#182) (by Carlos Pereira Atencio)
 
+<<<<<<< HEAD
 ## [v0.2.69](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.68...v0.2.69)
 
+=======
+## [v0.2.69](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.67...v0.2.69)
+
+ - Updated the Changelog (by Carlos Pereira Atencio)
+ - Allow log full FUL to be written to last byte (#438) (by Martin Williams)
+ - Temporarily set CODAL_VERSION back to "unknown". (#445) (by Carlos Pereira Atencio)
+ - Snapshot v0.2.68 (by Carlos Pereira Atencio)
+>>>>>>> v0.3.2-calliope-3
  - Fix CODAL_VERSION config value defined in target.json (by Carlos Pereira Atencio)
  - CI: Changelog script to also include libs when created from scratch. (by Carlos Pereira Atencio)
  - CI: Update Changelog script to clone libs in tmp dir to get history. (by Carlos Pereira Atencio)
@@ -144,12 +180,15 @@
 ### codal-core ([509086c...c43b899](https://github.com/lancaster-university/codal-core/compare/509086cc8590465041b15493ab52b56e7071c110...c43b89936ed72c022f2649f5540a9a74ef48fd04))
 
  - StreamRecording - calculate memory overhead of buffers (#175) (by Martin Williams)
+<<<<<<< HEAD
 
 ## [v0.2.68](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.67...v0.2.68)
 
  - Allow log full FUL to be written to last byte (#438) (by Martin Williams)
  - Temporarily set CODAL_VERSION back to "unknown". (#445) (by Carlos Pereira Atencio)
  - Snapshot v0.2.68 (by Carlos Pereira Atencio)
+=======
+>>>>>>> v0.3.2-calliope-3
 
 ## [v0.2.67](https://github.com/lancaster-university/codal-microbit-v2/compare/v0.2.66...v0.2.67)
 

@@ -53,10 +53,11 @@
     "generate_hex": true,
     "libraries": [
         {
-            "branch": "e6b061f2a6d8977811e3025da387d3007e5796f2",
+            "branch": "4cc9143f5c56e77c04b5cd53c02e67969598914c",
+
             "name": "codal-core",
             "type": "git",
-            "url": "https://github.com/lancaster-university/codal-core"
+            "url": "https://github.com/calliope-edu/codal-core"
         },
         {
             "branch": "1fbb7240290fe36a55c61378f5cdeb7640f3ec4a",
@@ -75,6 +76,10 @@
     "post_process": "",
     "processor": "NRF52833",
     "show_size": true,
+<<<<<<< HEAD
     "snapshot_version": "v0.3.5",
+=======
+    "snapshot_version": "v0.3.2",
+>>>>>>> v0.3.2-calliope-3
     "toolchain": "ARM_GCC"
 }

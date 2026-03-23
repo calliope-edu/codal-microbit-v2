@@ -14,10 +14,11 @@ jobs:
       - name: Clone MicroPython
         uses: actions/checkout@v4
         with:
-          repository: 'microbit-foundation/micropython-microbit-v2'
+          repository: 'calliope-edu/micropython-microbit-v2'
+          ref: 'v2.1.2-cmini3'
           submodules: 'true'
           # FIXME: Temporarily check out the audio-recording branch for testing
-          ref: 'audio-recording'
+          #ref: 'audio-recording'
       - name: Manually clone microbit-v2-samples in the lib/codal/libraries folder
         uses: actions/checkout@v4
         with:
@@ -44,7 +45,7 @@ jobs:
               codal_json = json.loads(f.read(), object_pairs_hook=collections.OrderedDict)
 
           try:
-              if codal_json['target']['url'] != "https://github.com/lancaster-university/codal-microbit-v2":
+              if codal_json['target']['url'] != "https://github.com/calliope-edu/codal-microbit-v2":
                   print("Unexpected target URL value.")
                   exit(1)
               # Just need to check this exists, we don't care about the value
@@ -54,7 +55,7 @@ jobs:
               exit(1)
           else:
               codal_json['target']['url'] = codal_json['target']['url'].replace(
-                  'lancaster-university/codal-microbit-v2', '${GITHUB_REPOSITORY}'
+                  'calliope-edu/codal-microbit-v2', '${GITHUB_REPOSITORY}'
               )
               codal_json['target']['branch'] = '${GITHUB_SHA}'
 
