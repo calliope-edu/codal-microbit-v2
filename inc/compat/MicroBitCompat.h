@@ -42,6 +42,17 @@ DEALINGS IN THE SOFTWARE.
 #include "codal-core/inc/driver-models/I2C.h"
 #include "codal-core/inc/drivers/KeyValueStorage.h"
 
+// Older GCC/newlib stdio headers may define getc/putc as macros.
+// That breaks C++ method declarations with the same names in serial/UART classes.
+// Undefine them here before including any headers that declare those methods.
+#ifdef getc
+#undef getc
+#endif
+
+#ifdef putc
+#undef putc
+#endif
+
 #include "MicroBitIO.h"
 #include "NRF52Pin.h"
 #include "NRF52I2C.h"
