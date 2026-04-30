@@ -42,7 +42,7 @@ jobs:
         shell: bash
         run: |
           python - << EOF
-          import json, collections
+          import os, json, collections
 
           with open('src/codal_app/codal.json', 'r') as f:
               codal_json = json.loads(f.read(), object_pairs_hook=collections.OrderedDict)
@@ -58,8 +58,8 @@ jobs:
               print('The src/codal_app/codal.json structure has changed and expected keys are not found.')
               exit(1)
           else:
-              codal_json['target']['url'] = f"https://github.com/${{GITHUB_REPOSITORY}}"
-              codal_json['target']['branch'] = '${GITHUB_SHA}'
+              codal_json['target']['url'] = f"https://github.com/{os.environ['GITHUB_REPOSITORY']}"
+              codal_json['target']['branch'] = os.environ['GITHUB_SHA']
 
           with open('src/codal_app/codal.json', 'w') as f:
               f.write(json.dumps(codal_json, indent=4))

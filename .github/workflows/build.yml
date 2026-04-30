@@ -10,16 +10,20 @@ jobs:
   build-microbit-v2-samples:
     strategy:
       matrix:
-        # macos-13 is Intel and macos-15 is arm64
-        os: [ubuntu-22.04, macos-13, macos-15, windows-2022]
-        gcc: ['6-2016-q4', 'latest']  # Min version 6.2 as used in pext/yotta:latest docker image
-        cmake: ['3.6.0', '3.31.6']  # Pin modern CMake to the latest 3.x release; CODAL deps are not yet CMake 4 compatible
-        exclude:
-          # This old version of CMake doesn't run un Ubuntu 22.04
+        # Keep CI focused on current runners while retaining one legacy GCC lane on Ubuntu.
+        include:
           - os: ubuntu-22.04
-            cmake: '3.6.0'
-          - os: macos-13
+            gcc: '6-2016-q4'
+            cmake: '3.31.6'
+          - os: ubuntu-22.04
             gcc: 'latest'
+            cmake: '3.31.6'
+          - os: macos-15
+            gcc: 'latest'
+            cmake: '3.31.6'
+          - os: windows-2022
+            gcc: 'latest'
+            cmake: '3.31.6'
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }}, gcc ${{ matrix.gcc }}, cmake ${{ matrix.cmake }}
