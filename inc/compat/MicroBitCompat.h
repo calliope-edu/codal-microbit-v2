@@ -36,11 +36,6 @@ DEALINGS IN THE SOFTWARE.
 #include "codal-core/inc/driver-models/Timer.h"
 #include "codal-core/inc/drivers/MultiButton.h"
 #include "codal-core/inc/driver-models/Compass.h"
-#include "codal-core/inc/driver-models/Serial.h"
-#include "codal-core/inc/drivers/LEDMatrix.h"
-#include "codal-core/inc/drivers/AnimatedDisplay.h"
-#include "codal-core/inc/driver-models/I2C.h"
-#include "codal-core/inc/drivers/KeyValueStorage.h"
 
 // Older GCC/newlib stdio headers may define getc/putc as macros.
 // That breaks C++ method declarations with the same names in serial/UART classes.
@@ -52,6 +47,12 @@ DEALINGS IN THE SOFTWARE.
 #ifdef putc
 #undef putc
 #endif
+
+#include "codal-core/inc/driver-models/Serial.h"
+#include "codal-core/inc/drivers/LEDMatrix.h"
+#include "codal-core/inc/drivers/AnimatedDisplay.h"
+#include "codal-core/inc/driver-models/I2C.h"
+#include "codal-core/inc/drivers/KeyValueStorage.h"
 
 #include "MicroBitIO.h"
 #include "NRF52Pin.h"
