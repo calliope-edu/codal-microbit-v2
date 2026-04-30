@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 #include "MicroBitCompass.h"
 #include "ErrorNo.h"
 #include "MicroBitEvent.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "MicroBitFiber.h"
 #include "MicroBitDevice.h"
 #include "MicroBitError.h"

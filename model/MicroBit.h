@@ -56,7 +56,7 @@ DEALINGS IN THE SOFTWARE.
 #include "MicroBitThermometer.h"
 #include "MicroBitCompassCalibrator.h"
 #include "MicroBitDevice.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "MicroBitAccelerometer.h"
 #include "MicroBitCompass.h"
 #include "MicroBitPowerManager.h"

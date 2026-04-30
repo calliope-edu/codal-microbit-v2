@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 #include "MicroBitAccelerometer.h"
 #include "MicroBitIO.h"
 #include "MicroBitEvent.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "MicroBitDevice.h"
 #include "MicroBitI2C.h"
 #include "MicroBitCompass.h"

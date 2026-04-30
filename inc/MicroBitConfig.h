@@ -3,7 +3,7 @@
 
 #include "CodalConfig.h"
 #include "yotta_cfg_mappings.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 
 #ifdef SOFTDEVICE_PRESENT
     #include "nrf_mbr.h"

@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #include "Pin.h"
 #include "CodalConfig.h"
 #include "CodalComponent.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "Mixer2.h"
 
 #ifndef CONFIG_SOUND_OUTPUT_PIN_PERIOD

@@ -23,7 +23,7 @@ DEALINGS IN THE SOFTWARE.
 #include "MicroBitFileSystem.h"
 #include "MicroBitFlash.h"
 #include "MicroBitStorage.h"        
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "ErrorNo.h"
 
 using namespace codal;

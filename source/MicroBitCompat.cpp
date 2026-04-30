@@ -23,7 +23,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 
 void 
 codal::fiber_add_idle_component(codal::CodalComponent *c)

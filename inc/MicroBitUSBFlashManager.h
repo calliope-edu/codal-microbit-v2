@@ -26,7 +26,7 @@ DEALINGS IN THE SOFTWARE.
 #define MICROBIT_USB_FLASH_MANAGER_H
 
 #include "MicroBitConfig.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "MicroBitIO.h"
 #include "codal-core/inc/core/CodalComponent.h"
 #include "codal-core/inc/driver-models/I2C.h"

@@ -26,7 +26,7 @@ DEALINGS IN THE SOFTWARE.
 #define MICROBIT_ACCELEROMTER_H
 
 #include "CodalConfig.h"
-#include "MicroBitCompat.h"
+#include "compat/MicroBitCompat.h"
 #include "codal-core/inc/driver-models/Accelerometer.h"
 #include "codal-core/inc/types/CoordinateSystem.h"
 #include "MicroBitI2C.h"
