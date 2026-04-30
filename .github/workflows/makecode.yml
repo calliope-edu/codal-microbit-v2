@@ -89,7 +89,7 @@ jobs:
           except KeyError as e:
               msg_exit('The pxt-calliope/pxtarget.json structure has changed and expected keys are not found.')
           else:
-              minidal['compileService'] = { 'dockerArgs' : ['--env', 'YOTTA_GITHUB_AUTHTOKEN=${{ secrets.YOTTA_GITHUB_AUTHTOKEN }}'] }
+              minidal['compileService'] = { 'dockerArgs' : ['--env', 'YOTTA_GITHUB_AUTHTOKEN=${{ secrets.YOTTA_GITHUB_AUTHTOKEN || github.token }}', '--env', 'GITHUB_ACCESS_TOKEN=${{ secrets.YOTTA_GITHUB_AUTHTOKEN || github.token }}'] }
               minicodal['compileService']['codalTarget']['url'] = minicodal['compileService']['codalTarget']['url'].replace(
                   'calliope-edu/codal-microbit-v2', '${GITHUB_REPOSITORY}'
               )
@@ -118,4 +118,5 @@ jobs:
           umask 0000
           ${{ matrix.pxt-flags }} pxt buildtarget --local
         env:
-          YOTTA_GITHUB_AUTHTOKEN: ${{ secrets.YOTTA_GITHUB_AUTHTOKEN }}
+          YOTTA_GITHUB_AUTHTOKEN: ${{ secrets.YOTTA_GITHUB_AUTHTOKEN || github.token }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.YOTTA_GITHUB_AUTHTOKEN || github.token }}
