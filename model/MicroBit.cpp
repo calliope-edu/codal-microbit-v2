@@ -295,6 +295,14 @@ int MicroBit::init()
         MicroBitUtilityService::createShared( *ble, messageBus, storage, log);
     #endif
 
+    // Always register the MbitMore stub service so every hex presents the
+    // same GATT shape — keeps partial-flash DAL hashes aligned between
+    // plain MakeCode and pxt-blocks/Scratch builds. Real driver code (the
+    // blocks runtime) hooks in via the public registerWriteHandler /
+    // notifyChar API; with no driver registered the characteristics return
+    // zeros and writes are silently absorbed.
+    MicroBitMbitMoreService::createShared( *ble);
+
     // Bring up the 64MHz external oscillator.
     sd_clock_hfclk_request();
 #else
