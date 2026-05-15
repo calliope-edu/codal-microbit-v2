@@ -264,13 +264,18 @@ void MicroBitBLEManager::init( ManagedString deviceName, ManagedString serialNum
     MICROBIT_BLE_ECHK( nrf_sdh_ble_default_cfg_set( microbit_ble_CONN_CFG_TAG, &ram_start));
     
     // set fixed gap name
-    gapName = MICROBIT_BLE_MODEL;
-    if ( enableBonding || !CONFIG_ENABLED(MICROBIT_BLE_WHITELIST))
+    //
+    // Always include the 5-letter friendly suffix so the Web Bluetooth
+    // picker (which scans live advertising) can show "Calliope mini [tipov]"
+    // and distinguish multiple minis at a glance. The same name flows into
+    // the OS pairing list. Total length stays well under the 31-byte
+    // advertising payload limit even with the suffix.
     {
         ManagedString namePrefix(" [");
         ManagedString namePostfix("]");
-        gapName = gapName + namePrefix + deviceName + namePostfix;
+        gapName = ManagedString(MICROBIT_BLE_MODEL) + namePrefix + deviceName + namePostfix;
     }
+    (void)enableBonding;
     ble_cfg_t ble_cfg;
     memset(&ble_cfg, 0, sizeof(ble_cfg));
     BLE_GAP_CONN_SEC_MODE_SET_NO_ACCESS( &ble_cfg.gap_cfg.device_name_cfg.write_perm);
