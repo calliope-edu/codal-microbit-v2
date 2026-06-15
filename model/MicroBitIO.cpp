@@ -63,13 +63,13 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     P14(ID_PIN_P14, P0_01, PIN_CAPABILITY_AD),
     P15(ID_PIN_P15, P0_13, PIN_CAPABILITY_AD),
     /// P16(ID_PIN_P16, P1_02, PIN_CAPABILITY_AD),
-    P16(ID_PIN_P16, P0_29, PIN_CAPABILITY_AD), //new Calliope analog pin (C16)
-    P17(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), //Micro:bit P16
-    P18(ID_PIN_P18, P0_31, PIN_CAPABILITY_AD), //Micro:bit P3
+    A1RX(ID_PIN_P16, P0_29, PIN_CAPABILITY_AD), // Calliope C16
+    A1TX(ID_PIN_P17, P1_02, PIN_CAPABILITY_AD), // Calliope C17 / Micro:bit P16
+    P18(ID_PIN_P18, P0_31, PIN_CAPABILITY_AD), //  Calliope C18 / Micro:bit P3
     /// P19(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
-    P19(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD),
+    A0SCL(ID_PIN_P19, P0_26, PIN_CAPABILITY_AD), // Calliope C19 / Micro:bit P19
     /// P20(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD),
-    P20(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD), //
+    A0SDA(ID_PIN_P20, P1_00, PIN_CAPABILITY_AD), // Calliope C20 / Micro:bit P20
     // Calliope mini3
     RGB(ID_PIN_RGB, P0_07, PIN_CAPABILITY_AD),// RGBLED       P0_07
     M_A_IN1(ID_PIN_M_A_IN1, P1_01, PIN_CAPABILITY_AD),// Motor A IN1  P1_01
@@ -103,7 +103,10 @@ MicroBitIO::MicroBitIO(NRF52ADC &a, TouchSensor &s) :
     col4(P6),
     col5(P10),
     buttonA(P5),
-    buttonB(P11)
+    buttonB(P11),
+    P16(A1TX),
+    P19(A0SCL),
+    P20(A0SDA)
 {
     NRF52Pin::adc = &a;
     NRF52Pin::touchSensor = &s;

@@ -391,7 +391,7 @@ namespace codal
             NRF52Pin          P0;           // P0_02
             NRF52Pin          P1;           // P0_03
             NRF52Pin          P2;           // P0_04
-            NRF52Pin          P3;           // P1_03 //[Calliope] connect PAD3 (P1_03) : DELETE COMMENT
+            NRF52Pin          P3;           // P1_03 //[Calliope] P3 (touch pin)
             NRF52Pin          P4;           // P0_28
             NRF52Pin          P5;           // P0_14
             NRF52Pin          P6;           // P1_05
@@ -405,9 +405,8 @@ namespace codal
             NRF52Pin          P14;          // P0_01
             NRF52Pin          P15;          // P0_13
             ///NRF52Pin          P16;          // P1_02
-            NRF52Pin          P16;          // P0_29 Calliope analog pin (C16)
-            ///NRF52Pin          P17;          // //[Calliope] P1_02
-            NRF52Pin          P17;          // Micro:bit P16
+            NRF52Pin          P16;          // P0_29 // [Calliope] C16 (analog pin)
+            NRF52Pin          P17;          // [Calliope] C17 / Micro:bit P16
             NRF52Pin          P18;          // P0_31
             
             NRF52Pin          P19;          // P0_26
@@ -450,7 +449,9 @@ namespace codal
             NRF52Pin&         col5;
             NRF52Pin&         buttonA;
             NRF52Pin&         buttonB;
-
+            NRF52Pin&         P16;
+            NRF52Pin&         P19;
+            NRF52Pin&         P20;
 
 
             /**
