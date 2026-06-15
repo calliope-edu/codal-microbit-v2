@@ -405,12 +405,12 @@ namespace codal
             NRF52Pin          P14;          // P0_01
             NRF52Pin          P15;          // P0_13
             ///NRF52Pin          P16;          // P1_02
-            NRF52Pin          P16;          // P0_29 // [Calliope] C16 (analog pin)
-            NRF52Pin          P17;          // [Calliope] C17 / Micro:bit P16
+            NRF52Pin          A1RX;          // P0_29 // [Calliope] C16 (analog pin)
+            NRF52Pin          A1TX;          // P1_02 // [Calliope] C17 / Micro:bit P16
             NRF52Pin          P18;          // P0_31
             
-            NRF52Pin          P19;          // P0_26
-            NRF52Pin          P20;          // P1_00 
+            NRF52Pin          A0SCL;          // P0_26
+            NRF52Pin          A0SDA;          // P1_00 
             
   
 
