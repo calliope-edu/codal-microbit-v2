@@ -39,13 +39,14 @@
       let n = null;
       let csv = "";
       let tag = d.createElement.bind(d);
+      let x = "Calliope mini";
       // Allow external JS to override these actions if we managed to load it.
       // This script block is first so external JS can override individual functions.
       w.dl = {
         mode: "default",
         download: function () {
           let a = tag("a");
-          a.download = "microbit.csv";
+          a.download = x+".csv";
           a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
           a.click();
           a.remove();
@@ -55,11 +56,11 @@
         },
         update: alert.bind(
           n,
-          "Unplug your micro:bit, then plug it back in and wait"
+          `Unplug your ${x}, then plug it back in and wait`
         ),
         clear: alert.bind(
           n,
-          "The log is cleared when you reflash your micro:bit"
+          `The log is cleared when you reflash your ${x}`
         ),
         load: function () {
           // Find the CSV text in the file system
@@ -128,11 +129,11 @@
     </script>
     <base href="https://data.microbit.org" />
     <script src="v3/dl.js"></script>
-    <title>micro:bit data log</title>
+    <title>Calliope mini data log</title>
   </head>
   <body onload="dl.load()">
     <div id="w">
-      <h1>micro:bit data log</h1>
+      <h1>Calliope mini data log</h1>
       <div class="bb">
         <button onclick="dl.download()">Download</button>
         <button onclick="dl.copy()">Copy</button>

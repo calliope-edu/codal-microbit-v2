@@ -1,5 +1,9 @@
 name: Build Samples
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+
 on:
   push:
     branches: '*'
@@ -10,19 +14,23 @@ jobs:
   build-microbit-v2-samples:
     strategy:
       matrix:
-        # macos-13 is Intel and macos-15 is arm64
-        os: [ubuntu-22.04, macos-13, macos-15, windows-2022]
-        gcc: ['6-2016-q4', 'latest']  # Min version 6.2 as used in pext/yotta:latest docker image
-        cmake: ['3.6.0', '']  # Empty string installs the latest CMake release
-        exclude:
-          # This old version of CMake doesn't run un Ubuntu 22.04
+        # Keep CI focused on current runners while retaining one legacy GCC lane on Ubuntu.
+        include:
           - os: ubuntu-22.04
-            cmake: '3.6.0'
-          - os: macos-13
+            gcc: '6-2016-q4'
+            cmake: '3.31.6'
+          - os: ubuntu-22.04
             gcc: 'latest'
+            cmake: '3.31.6'
+          - os: macos-15
+            gcc: 'latest'
+            cmake: '3.31.6'
+          - os: windows-2022
+            gcc: 'latest'
+            cmake: '3.31.6'
       fail-fast: false
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.os }}, gcc ${{ matrix.gcc }}, cmake ${{ matrix.cmake || 'latest'}}
+    name: ${{ matrix.os }}, gcc ${{ matrix.gcc }}, cmake ${{ matrix.cmake }}
     steps:
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -47,7 +55,8 @@ jobs:
       - name: Clone the microbit-v2-samples repository
         uses: actions/checkout@v4
         with:
-          repository: 'lancaster-university/microbit-v2-samples'
+          repository: 'calliope-edu/microbit-v2-samples'
+          ref: 'calliope'
       # We need to use the checkout action (instead of build.py cloning the
       # repository) so that on PRs we can get the commit from the PR merge
       - name: Clone this repository in the libraries folder
@@ -76,7 +85,7 @@ jobs:
       - name: Build default (non-ble) project using build.py
         run: python build.py
       - name: Upload non-ble hex file
-        if: runner.os == 'Windows' && matrix.gcc == 'latest' && matrix.cmake == ''
+        if: runner.os == 'Windows' && matrix.gcc == 'latest' && matrix.cmake == '3.31.6'
         uses: actions/upload-artifact@v4
         with:
           name: codal-microbit-v2-${{ github.sha }}
@@ -95,7 +104,7 @@ jobs:
       - name: Build BLE project using build.py
         run: python build.py --clean
       - name: Upload BLE hex file
-        if: runner.os == 'Windows' && matrix.gcc == 'latest' && matrix.cmake == ''
+        if: runner.os == 'Windows' && matrix.gcc == 'latest' && matrix.cmake == '3.31.6'
         uses: actions/upload-artifact@v4
         with:
           name: codal-microbit-v2-BLE-${{ github.sha }}
