@@ -232,7 +232,7 @@ void SoundOutputPin::updateOutputBuffer(bool all)
     _periodUs = periodUs;
     _value = value;
 
-    target_disable_irqn(PWM1_IRQn);
+    target_enable_irqn(PWM1_IRQn);
 }
 
 /**
