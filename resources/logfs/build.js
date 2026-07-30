@@ -61,7 +61,7 @@ const main = (mode) => {
       .filter((f) => f.startsWith(trailerPrefix) && f.endsWith(".txt"));
     // Enable testing of included CSS/JS for the basic experience against the dl.js/css files in this repo
     if (mode === "basic") {
-      result = result.replace(/https:\/\/microbit.org\/dl\/\d\//g, "../");
+  result = result.replace(/https:\/\/go.calliope.cc\/assets\/dl\/\d\//g, "./");
     }
     for (const trailerName of trailers) {
       const trailer = fs.readFileSync(
